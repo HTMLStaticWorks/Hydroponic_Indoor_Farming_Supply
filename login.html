@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Login - AgriCulture Hydroponics</title>
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
+  
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Shared Styles (needed for variables and floating controls) -->
+  <link href="assets/css/theme-rtl.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, var(--light-section-bg) 0%, var(--background-color) 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+    }
+    .logo-centered {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-google {
+      background: white;
+      color: #444;
+      border: 1px solid #ddd;
+    }
+    .btn-google:hover {
+      background: #f8f9fa;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+      opacity: 0.5;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .divider:not(:empty)::before { margin-right: .25em; }
+    .divider:not(:empty)::after { margin-left: .25em; }
+
+    @media (max-width: 991.98px) {
+      .login-meta-row {
+        flex-wrap: nowrap;
+        gap: 10px;
+      }
+
+      .login-meta-row .form-check-label,
+      .login-meta-row a {
+        white-space: nowrap;
+        font-size: 0.78rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+    <a href="index.html" class="logo-centered d-block text-decoration-none mb-4">
+      <img src="assets/img/logo.png" alt="AgriCulture Logo" class="mx-auto d-block" style="max-height: 50px;">
+    </a>
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">Welcome Back</h3>
+      <p class="text-muted small">Sign in to your hydroponic dashboard</p>
+    </div>
+
+    <form>
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Email Address</label>
+        <input type="email" class="form-control" placeholder="name@example.com">
+      </div>
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Password</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
+          <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('passwordInput')">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="d-flex justify-content-between align-items-center mb-4 login-meta-row">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label small" for="rememberMe">Remember me</label>
+        </div>
+        <a href="#" class="small text-success">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 py-2 mb-3">Sign In</button>
+      
+      <div class="divider small fw-bold">OR</div>
+      
+      <button type="button" class="btn btn-google w-100 py-2 d-flex align-items-center justify-content-center gap-2">
+        <i class="bi bi-google"></i> Continue with Google
+      </button>
+
+      <div class="text-center mt-4 pt-3 border-top">
+        <p class="small mb-0">Don't have an account? <a href="register.html" class="text-success fw-bold">Create Account</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script src="assets/js/theme-rtl.js"></script>
+  <script>
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
+      const icon = event.currentTarget.querySelector('i');
+      icon.classList.toggle('bi-eye');
+      icon.classList.toggle('bi-eye-slash');
+    }
+  </script>
+</body>
+
+</html>
+
+
