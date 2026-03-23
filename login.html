@@ -40,14 +40,34 @@
       text-align: center;
       margin-bottom: 20px;
     }
-    .btn-google {
-      background: white;
-      color: #444;
-      border: 1px solid #ddd;
+    .btn-social {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--surface-color);
+      color: var(--default-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 2px 4px var(--shadow-color);
     }
-    .btn-google:hover {
-      background: #f8f9fa;
+    .btn-social:hover {
+      background: var(--accent-color);
+      color: white !important;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 163, 89, 0.25);
     }
+    .btn-social i {
+      font-size: 1.1rem;
+    }
+
     .divider {
       display: flex;
       align-items: center;
@@ -98,7 +118,7 @@
         <label class="form-label small fw-bold">Password</label>
         <div class="input-group">
           <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
-          <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('passwordInput')">
+          <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('passwordInput')" aria-label="Toggle Password Visibility">
             <i class="bi bi-eye"></i>
           </button>
         </div>
@@ -116,9 +136,23 @@
       
       <div class="divider small fw-bold">OR</div>
       
-      <button type="button" class="btn btn-google w-100 py-2 d-flex align-items-center justify-content-center gap-2">
-        <i class="bi bi-google"></i> Continue with Google
-      </button>
+      <div class="row g-2 mb-3">
+        <div class="col-4">
+          <button type="button" class="btn-social" title="Continue with Google" aria-label="Continue with Google">
+            <i class="bi bi-google"></i>
+          </button>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn-social" title="Continue with Facebook" aria-label="Continue with Facebook">
+            <i class="bi bi-facebook"></i>
+          </button>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn-social" title="Continue with Apple" aria-label="Continue with Apple">
+            <i class="bi bi-apple"></i>
+          </button>
+        </div>
+      </div>
 
       <div class="text-center mt-4 pt-3 border-top">
         <p class="small mb-0">Don't have an account? <a href="register.html" class="text-success fw-bold">Create Account</a></p>
