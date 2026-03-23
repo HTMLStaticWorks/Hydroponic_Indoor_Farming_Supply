@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <span class="fw-bold text-dark">${item.name}</span>
+                            <span class="fw-bold cart-product-name">${item.name}</span>
                         </div>
                     </td>
                     <td>$${price.toFixed(2)}</td>

@@ -280,14 +280,46 @@ p {
   color: var(--muted-color) !important;
 }
 
-/* Product Section Contrast */
-.product-card .product-title {
+/* Product Section Contrast - Enhanced */
+.product-card .product-title,
+.featured-products .card h5 {
   color: var(--heading-color) !important;
   font-weight: 600;
 }
-.product-card .product-price {
+
+.product-card .product-price,
+.featured-products .card .text-success.fw-bold {
   color: var(--accent-color) !important;
   font-weight: 700;
+}
+
+/* Enhanced contrast for product titles in dark mode */
+[data-theme="dark"] .product-card .product-title,
+[data-theme="dark"] .featured-products .card h5 {
+  color: #ffffff !important;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Enhanced contrast for product prices in dark mode */
+[data-theme="dark"] .product-card .product-price,
+[data-theme="dark"] .featured-products .card .text-success.fw-bold {
+  color: #4ade80 !important;
+  font-weight: 700;
+}
+
+/* Ensure product card backgrounds have proper contrast */
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .featured-products .card {
+  background-color: var(--surface-color) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* Additional contrast for product info sections */
+[data-theme="dark"] .product-info,
+[data-theme="dark"] .featured-products .card .card-body {
+  background-color: var(--surface-color) !important;
+  color: var(--default-color) !important;
 }
 
 /* shadow-sm in dark mode */

@@ -1,0 +1,106 @@
+﻿diff --git a/dashboard.html b/dashboard.html
+index 3270e9a..d7be613 100644
+--- a/dashboard.html
++++ b/dashboard.html
+@@ -202,7 +202,7 @@
+           <div class="row g-3">
+             <div class="col-md-4">
+               <div class="card h-100 p-3 border-0 shadow-sm">
+-                <h6>Nutrient Solution Pack A</h6>
++                <h6>Nutrient Solution Pack</h6>
+                 <p class="small opacity-50 mb-2">Every 2 weeks</p>
+                 <div class="d-flex justify-content-between align-items-center">
+                   <span class="status-badge status-active">Active</span>
+@@ -240,24 +240,24 @@
+           <div class="d-flex justify-content-between align-items-center mb-4">
+             <h5 class="mb-0">Product Catalog</h5>
+             <div class="d-flex gap-2">
+-              <span class="badge bg-success-subtle text-success p-2 cursor-pointer">All</span>
+-              <span class="badge bg-light text-dark p-2 cursor-pointer">Nutrients</span>
+-              <span class="badge bg-light text-dark p-2 cursor-pointer">Seeds</span>
+-              <span class="badge bg-light text-dark p-2 cursor-pointer">Hardware</span>
++              <span class="category-filter badge bg-success-subtle text-success p-2 cursor-pointer active" data-category="all">All</span>
++              <span class="category-filter badge bg-light text-dark p-2 cursor-pointer" data-category="nutrients">Nutrients</span>
++              <span class="category-filter badge bg-light text-dark p-2 cursor-pointer" data-category="seeds">Seeds</span>
++              <span class="category-filter badge bg-light text-dark p-2 cursor-pointer" data-category="hardware">Hardware</span>
+             </div>
+           </div>
+ 
+           <div class="catalog-grid">
+-            <div class="catalog-item">
++            <div class="catalog-item" data-category="nutrients">
+               <img src="assets/img/p_nutrients.png" alt="Nutrient Solution">
+               <div class="catalog-content text-center">
+-                <h6>Premium Nutrient Pack</h6>
++                <h6>Nutrient Solution Pack</h6>
+                 <span class="catalog-price">$59.00</span>
+-                <button onclick="addToCart('p1', 'Premium Nutrient Pack', 59, 'assets/img/p_nutrients.png')"
++                <button onclick="addToCart('p1', 'Nutrient Solution Pack', 59, 'assets/img/p_nutrients.png')"
+                   class="btn btn-success btn-sm w-100">Add to Cart</button>
+               </div>
+             </div>
+-            <div class="catalog-item">
++            <div class="catalog-item" data-category="hardware">
+               <img src="assets/img/p_led_light.png" alt="LED Light">
+               <div class="catalog-content text-center">
+                 <h6>LED Grow Light 300W</h6>
+@@ -266,7 +266,7 @@
+                   class="btn btn-success btn-sm w-100">Add to Cart</button>
+               </div>
+             </div>
+-            <div class="catalog-item">
++            <div class="catalog-item" data-category="seeds">
+               <img src="assets/img/p_seed_kit.png" alt="Seed Kit">
+               <div class="catalog-content text-center">
+                 <h6>Gourmet Seed Kit</h6>
+@@ -275,15 +275,7 @@
+                   class="btn btn-success btn-sm w-100">Add to Cart</button>
+               </div>
+             </div>
+-            <div class="catalog-item">
+-              <img src="assets/img/p_ph_controller.png" alt="pH Controller">
+-              <div class="catalog-content text-center">
+-                <h6>Smart pH Controller</h6>
+-                <span class="catalog-price">$149.00</span>
+-                <button onclick="addToCart('p4', 'Smart pH Controller', 149, 'assets/img/p_ph_controller.png')"
+-                  class="btn btn-success btn-sm w-100">Add to Cart</button>
+-              </div>
+-            </div>
++             
+           </div>
+         </div>
+       </div>
+@@ -558,6 +550,33 @@
+           sidebar.classList.toggle('mobile-active');
+         });
+       }
++
++      // Product Catalog Category Filtering
++      const categoryFilters = document.querySelectorAll('.category-filter');
++      const catalogItems = document.querySelectorAll('.catalog-item');
++
++      categoryFilters.forEach(filter => {
++        filter.addEventListener('click', function () {
++          const category = this.getAttribute('data-category');
++
++          // Update active filter
++          categoryFilters.forEach(f => {
++            f.classList.remove('active', 'bg-success-subtle', 'text-success');
++            f.classList.add('bg-light', 'text-dark');
++          });
++          this.classList.remove('bg-light', 'text-dark');
++          this.classList.add('active', 'bg-success-subtle', 'text-success');
++
++          // Filter catalog items
++          catalogItems.forEach(item => {
++            if (category === 'all' || item.getAttribute('data-category') === category) {
++              item.style.display = 'block';
++            } else {
++              item.style.display = 'none';
++            }
++          });
++        });
++      });
+     });
+   </script>
+ </body>

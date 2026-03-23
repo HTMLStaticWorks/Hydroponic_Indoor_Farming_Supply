@@ -1,0 +1,18 @@
+﻿diff --git a/home2.html b/home2.html
+index c1c7879..65432f3 100644
+--- a/home2.html
++++ b/home2.html
+@@ -155,11 +155,11 @@
+             <div class="card h-100 border-0 shadow-sm p-3 text-center align-items-center">
+               <img src="assets/img/p_led_light.png" alt="LED Grow Light 300W product image" class="product-thumb img-fluid rounded mb-3">
+               <h5>LED Grow Light 300W</h5>
+-              <p class="text-success fw-bold">$199.00</p>
++              <p class="text-success fw-bold">$129.00</p>
+               <div class="text-warning mb-3">
+                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+               </div>
+-              <button class="btn btn-outline-success w-100 mt-auto btn-add-to-cart" data-id="2" data-name="LED Grow Light 300W" data-price="199.00">Add to Cart</button>
++              <button class="btn btn-outline-success w-100 mt-auto btn-add-to-cart" data-id="2" data-name="LED Grow Light 300W" data-price="129.00">Add to Cart</button>
+             </div>
+           </div>
+           <!-- 4 more product cards... -->
