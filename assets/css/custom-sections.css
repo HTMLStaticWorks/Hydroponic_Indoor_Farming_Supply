@@ -112,6 +112,21 @@
   gap: 15px;
 }
 
+.testimonial-card-v2 .client-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+  flex-shrink: 0;
+}
+
+.testimonial-card-v2 .client-info span {
+  display: block;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+}
+
 .testimonial-card-v2 .client-info h5 {
   margin: 0;
   font-weight: 700;
