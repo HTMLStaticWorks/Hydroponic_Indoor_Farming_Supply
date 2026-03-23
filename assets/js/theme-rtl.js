@@ -27,11 +27,22 @@
         </a>
       `;
 
+      const contactInfo = document.createElement('div');
+      contactInfo.className = 'mobile-drawer-contact mt-auto pt-4 border-top';
+      contactInfo.innerHTML = `
+        <h6 class="mb-3 fw-bold">Contact Info</h6>
+        <p class="mb-1 small d-flex align-items-center gap-2"><i class="bi bi-geo-alt text-success"></i> 22 MG Road, Bengaluru</p>
+        <p class="mb-1 small d-flex align-items-center gap-2"><i class="bi bi-telephone text-success"></i> +91 98765 43210</p>
+        <p class="mb-0 small d-flex align-items-center gap-2"><i class="bi bi-envelope text-success"></i> hello@agriculture.in</p>
+      `;
+
       const navList = drawer.querySelector('ul');
       if (navList) {
-        drawer.insertBefore(controls, navList);
+        navList.insertAdjacentElement('afterend', controls);
+        drawer.appendChild(contactInfo);
       } else {
         drawer.appendChild(controls);
+        drawer.appendChild(contactInfo);
       }
     });
   }
