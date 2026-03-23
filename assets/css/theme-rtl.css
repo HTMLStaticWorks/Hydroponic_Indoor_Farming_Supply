@@ -434,30 +434,6 @@ p {
   }
 }
 
-/* Mobile Drawer Contact Info */
-.mobile-drawer-contact {
-  padding: 20px 0;
-  margin-top: 20px;
-}
-
-.mobile-drawer-contact h6 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--accent-color);
-}
-
-.mobile-drawer-contact p {
-  color: var(--default-color);
-  opacity: 0.8;
-  font-size: 0.85rem;
-}
-
-[data-theme="dark"] .mobile-drawer-contact p {
-  color: #ffffff;
-  opacity: 0.7;
-}
-
 /* ============================================================
    TESTIMONIALS
    ============================================================ */
@@ -830,6 +806,16 @@ p {
   .login-card p,
   .register-card p {
     text-align: center !important;
+  }
+
+  .contact .info-container {
+    position: relative;
+    z-index: 10;
+  }
+
+  .contact .info-item a {
+    position: relative;
+    z-index: 100;
   }
 }
 
