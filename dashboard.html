@@ -41,9 +41,14 @@
 
     <div class="dashboard-main">
         <header class="dashboard-topbar">
-            <div>
-                <h1 style="margin: 0; font-size: 1.15rem; font-weight: 700;">User Dashboard</h1>
-                <p style="margin: 0.15rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Indoor farm control center</p>
+            <div style="display: flex; align-items: center;">
+                <button type="button" class="menu-toggle" id="dashboard-menu-toggle" aria-label="Toggle menu" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h1 style="margin: 0; font-size: 1.15rem; font-weight: 700;">User Dashboard</h1>
+                    <p style="margin: 0.15rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Indoor farm control center</p>
+                </div>
             </div>
             <div class="dashboard-topbar-actions">
                 <button type="button" class="icon-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle dark mode">
@@ -171,6 +176,8 @@
                 <a href="login.html" class="btn btn-secondary">Sign out on this device</a>
             </section>
         </div>
+
+        <div class="dashboard-backdrop" id="dashboard-backdrop"></div>
     </div>
 
     <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
@@ -178,8 +185,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+            
+            var sidebar = document.querySelector('.dashboard-sidebar');
+            var backdrop = document.getElementById('dashboard-backdrop');
+            var menuToggle = document.getElementById('dashboard-menu-toggle');
             var links = document.querySelectorAll('.dashboard-nav a');
             var sections = document.querySelectorAll('.dashboard-content section[id]');
+
+            function toggleMenu() {
+                sidebar.classList.toggle('active');
+                backdrop.classList.toggle('active');
+            }
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', toggleMenu);
+            }
+
+            if (backdrop) {
+                backdrop.addEventListener('click', toggleMenu);
+            }
+
             function setCurrent(hash) {
                 var id = (hash || '#overview').replace('#', '') || 'overview';
                 links.forEach(function (a) {
@@ -187,16 +212,22 @@
                     else a.removeAttribute('aria-current');
                 });
             }
+
             links.forEach(function (a) {
                 a.addEventListener('click', function () {
                     setCurrent(a.getAttribute('href'));
+                    if (window.innerWidth <= 900) {
+                        toggleMenu();
+                    }
                 });
             });
+
             var obs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (en) {
                     if (en.isIntersecting) setCurrent('#' + en.target.id);
                 });
             }, { root: document.querySelector('.dashboard-content'), threshold: 0.35 });
+            
             sections.forEach(function (s) { obs.observe(s); });
         });
     </script>

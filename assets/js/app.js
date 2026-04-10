@@ -46,32 +46,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     runLucide();
 
-    const menuIconOpen = menuToggle ? menuToggle.querySelector('.menu-icon-open') : null;
-    const menuIconClose = menuToggle ? menuToggle.querySelector('.menu-icon-close') : null;
-
     function setMenuOpenVisual(open) {
-        if (menuIconOpen) menuIconOpen.hidden = open;
-        if (menuIconClose) menuIconClose.hidden = !open;
+        if (menuToggle) {
+            if (open) {
+                menuToggle.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menuToggle.classList.replace('fa-times', 'fa-bars');
+            }
+        }
         runLucide();
     }
 
     if (menuToggle && navMenu) {
+        const navIconMap = {
+            'index.html': 'fa-home',
+            'index2.html': 'fa-house-chimney',
+            'products.html': 'fa-seedling',
+            'about.html': 'fa-building',
+            'solutions.html': 'fa-lightbulb',
+            'applications.html': 'fa-th-large',
+            'contact.html': 'fa-envelope'
+        };
+
+        // Mobile/Tablet: ensure only the requested primary links appear in the drawer
+        try {
+            if (window.matchMedia && window.matchMedia('(max-width: 992px)').matches) {
+                navMenu.querySelectorAll('a[href="dashboard.html"]').forEach((a) => {
+                    const li = a.closest('li');
+                    if (li) li.remove();
+                });
+            }
+        } catch (_) {
+            // no-op
+        }
+
+        navMenu.querySelectorAll('ul li a').forEach((link) => {
+            if (link.querySelector('i')) return;
+            const href = link.getAttribute('href') || '';
+            const iconClass = navIconMap[href];
+            if (!iconClass) return;
+            const icon = document.createElement('i');
+            icon.className = `fas ${iconClass}`;
+            icon.setAttribute('aria-hidden', 'true');
+            link.prepend(icon);
+        });
+
         const mobileActions = document.createElement('div');
         mobileActions.className = 'mobile-nav-actions';
 
+        const container = document.createElement('div');
+        container.className = 'mobile-nav-actions-container';
+
         if (navActions) {
-            const clones = navActions.cloneNode(true);
-            const clonedMenuToggle = clones.querySelector('.menu-toggle');
-            if (clonedMenuToggle) clonedMenuToggle.remove();
-            clones.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
-            clones.querySelectorAll('.theme-toggle-btn').forEach((btn) => {
-                btn.addEventListener('click', toggleTheme);
+            const items = navActions.querySelectorAll('a.icon-btn, button.icon-btn');
+            items.forEach((item) => {
+                if (item.classList.contains('menu-toggle') || item.id === 'menu-toggle') return;
+                // Only keep Cart / Profile / Search actions inside the drawer
+                const id = item.getAttribute('id') || '';
+                if (id === 'theme-toggle' || id === 'rtl-toggle') return;
+                const title = (item.getAttribute('title') || '').toLowerCase();
+                if (title && !['cart', 'profile', 'search'].includes(title)) return;
+
+                const clone = item.cloneNode(true);
+
+                clone.removeAttribute('id'); // Prevent duplicate IDs
+                container.appendChild(clone);
             });
-            clones.querySelectorAll('.rtl-toggle-btn').forEach((btn) => {
-                btn.addEventListener('click', toggleRTL);
-            });
-            mobileActions.appendChild(clones);
         }
+
+        mobileActions.appendChild(container);
 
         navMenu.appendChild(mobileActions);
 
@@ -99,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else openMenu();
         };
 
+
         menuToggle.addEventListener('click', toggleMenu);
         backdrop.addEventListener('click', closeMenu);
 
@@ -118,11 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     return;
                 }
-                e.preventDefault();
+                // For normal page navigations, allow the browser to handle navigation.
+                // Only close the drawer immediately to avoid blocking the click.
                 closeMenu();
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 50);
             });
         });
     }
