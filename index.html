@@ -9,6 +9,14 @@
         content="Premium hydroponic farming kits, grow lights, and nutrients for urban farmers and enthusiasts.">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            var d = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', d);
+        })();
+    </script>
 </head>
 
 <body>
@@ -66,37 +74,83 @@
         <section id="products-preview">
             <div class="container">
                 <h2 class="section-title text-center">Our Featured Products</h2>
-                <div class="card-grid">
+                <div class="card-grid card-grid--three">
+                    <!-- Product 1 -->
                     <div class="card">
-                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.08.57%20PM.jpeg" alt="Hydroponic Kit">
+                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.08.57%20PM.jpeg" alt="Starter Kit">
                         <div class="card-content">
-                            <h3>Hydroponic Kits</h3>
-                            <p>Complete starter kits for your indoor garden.</p>
-                            <a href="products.html" class="btn btn-primary">Add to Cart</a>
+                            <h3>Urban Starter Kit</h3>
+                            <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$149.00</p>
+                            <p>Perfect for beginners. Grows up to 6 plants simultaneously.</p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
+                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            </div>
                         </div>
                     </div>
+                    <!-- Product 2 -->
                     <div class="card">
-                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.06%20PM%20(2).jpeg" alt="Grow Lights">
+                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.06%20PM%20(2).jpeg" alt="Grow Light">
                         <div class="card-content">
-                            <h3>Grow Lights</h3>
-                            <p>Spectrum-optimized lighting for maximum yield.</p>
-                            <a href="products.html" class="btn btn-primary">Add to Cart</a>
+                            <h3>Full Spectrum LED</h3>
+                            <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$89.00</p>
+                            <p>100W energy-efficient lighting for all growth stages.</p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
+                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            </div>
                         </div>
                     </div>
+                    <!-- Product 3 -->
                     <div class="card">
                         <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.11%20PM%20(3).jpeg" alt="Nutrients">
                         <div class="card-content">
-                            <h3>Nutrients</h3>
-                            <p>Essential minerals for healthy plant growth.</p>
-                            <a href="products.html" class="btn btn-primary">Add to Cart</a>
+                            <h3>Nutrient Pack Alpha</h3>
+                            <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$45.00</p>
+                            <p>Rich mineral mix for leafy greens and herbs.</p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
+                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            </div>
                         </div>
                     </div>
+                    <!-- Product 4 -->
                     <div class="card">
-                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.12%20PM.jpeg" alt="Accessories">
+                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.07%20PM%20(1).jpeg" alt="System">
                         <div class="card-content">
-                            <h3>Accessories</h3>
-                            <p>Pumps, timers, and monitoring tools.</p>
-                            <a href="products.html" class="btn btn-primary">Add to Cart</a>
+                            <h3>Hydroponic Tower</h3>
+                            <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$399.00</p>
+                            <p>Space-saving vertical design for 24 plants.</p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
+                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 5 -->
+                    <div class="card">
+                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.12%20PM%20(2).jpeg" alt="Monitor">
+                        <div class="card-content">
+                            <h3>Smart pH Monitor</h3>
+                            <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$79.00</p>
+                            <p>Continuous monitoring with mobile app alerts.</p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
+                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 6 -->
+                    <div class="card">
+                        <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.13%20PM%20(1).jpeg" alt="Pump">
+                        <div class="card-content">
+                            <h3>EcoPump 500</h3>
+                            <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$55.00</p>
+                            <p>Silent, durable water pump for medium systems.</p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
+                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,22 +163,22 @@
                 <h2 class="section-title text-center">How It Works</h2>
                 <div class="card-grid">
                     <div class="card" style="background: transparent; border: none; box-shadow: none;">
-                        <i class="fas fa-box-open fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
+                        <div class="card-icon-top"><i data-lucide="package-open" aria-hidden="true"></i></div>
                         <h3>1. Choose Your Setup</h3>
                         <p>Select the kit that fits your space and goals.</p>
                     </div>
                     <div class="card" style="background: transparent; border: none; box-shadow: none;">
-                        <i class="fas fa-tools fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
+                        <div class="card-icon-top"><i data-lucide="wrench" aria-hidden="true"></i></div>
                         <h3>2. Install System</h3>
                         <p>Easy-to-follow instructions for quick setup.</p>
                     </div>
                     <div class="card" style="background: transparent; border: none; box-shadow: none;">
-                        <i class="fas fa-flask fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
+                        <div class="card-icon-top"><i data-lucide="flask-conical" aria-hidden="true"></i></div>
                         <h3>3. Add Nutrients</h3>
                         <p>Fuel your plants with our premium solutions.</p>
                     </div>
                     <div class="card" style="background: transparent; border: none; box-shadow: none;">
-                        <i class="fas fa-seedling fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
+                        <div class="card-icon-top"><i data-lucide="sprout" aria-hidden="true"></i></div>
                         <h3>4. Grow & Harvest</h3>
                         <p>Watch your garden flourish all year round.</p>
                     </div>
@@ -136,7 +190,7 @@
         <section id="testimonials">
             <div class="container">
                 <h2 class="section-title text-center">What Our Farmers Say</h2>
-                <div class="card-grid">
+                <div class="card-grid card-grid--three">
                     <article class="card">
                         <p>"The best investment for my urban apartment. Fresh greens every week!"</p>
                         <div style="margin-top: 20px; font-weight: 700;">- Sarah J.</div>
@@ -179,13 +233,12 @@
         </section>
 
         <!-- Final CTA -->
-        <section style="background: var(--primary); color: white; text-align: center;">
+        <section class="section-cta-band" style="background: var(--primary); color: white;">
             <div class="container">
-                <h2>Start Growing Today</h2>
+                <h2 style="color: white;">Start Growing Today</h2>
                 <p style="margin-bottom: 30px; opacity: 0.9;">Join thousands of urban farmers transforming their homes.
                 </p>
-                <a href="products.html" class="btn btn-secondary" style="border-color: white; color: white;">Shop
-                    Now</a>
+                <a href="products.html" class="btn btn-primary btn-primary-on-dark">Shop Now</a>
             </div>
         </section>
     </main>
@@ -195,20 +248,21 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="logo">
-                        <i class="fas fa-leaf"></i>
+                        <i data-lucide="leaf" aria-hidden="true"></i>
                         <span>HydroGrow</span>
                     </div>
                     <p>Sustainable indoor farming solutions for a greener future.</p>
                     <div class="footer-socials">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#" class="footer-social-link" title="X" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="products.html">Products</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
@@ -231,6 +285,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - HydroGrow</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            var d = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', d);
+        })();
+    </script>
+</head>
+<body class="dashboard-body">
+
+    <aside class="dashboard-sidebar" aria-label="Main navigation">
+        <div class="dashboard-sidebar-header">
+            <i class="fas fa-leaf" aria-hidden="true"></i>
+            <span>HydroGrow</span>
+        </div>
+        <nav class="dashboard-nav" aria-label="Dashboard sections">
+            <a href="#overview" aria-current="page"><i class="fas fa-th-large" aria-hidden="true"></i> Overview</a>
+            <a href="#grow-zones"><i class="fas fa-seedling" aria-hidden="true"></i> Grow zones</a>
+            <a href="#orders"><i class="fas fa-box" aria-hidden="true"></i> Orders &amp; supply</a>
+            <a href="#analytics"><i class="fas fa-chart-line" aria-hidden="true"></i> Analytics</a>
+            <a href="#crop-health"><i class="fas fa-heartbeat" aria-hidden="true"></i> Crop health</a>
+            <a href="#equipment"><i class="fas fa-microchip" aria-hidden="true"></i> Equipment</a>
+            <a href="#reports"><i class="fas fa-file-invoice" aria-hidden="true"></i> Reports</a>
+            <a href="#alerts"><i class="fas fa-bell" aria-hidden="true"></i> Notifications</a>
+            <a href="#settings"><i class="fas fa-cog" aria-hidden="true"></i> Settings</a>
+        </nav>
+        <div class="dashboard-sidebar-footer">
+            <a href="login.html" class="btn btn-secondary" style="width: 100%; margin-bottom: 0.5rem;">Log out</a>
+            <a href="index.html" class="btn btn-primary" style="width: 100%;">Back to site</a>
+        </div>
+    </aside>
+
+    <div class="dashboard-main">
+        <header class="dashboard-topbar">
+            <div>
+                <h1 style="margin: 0; font-size: 1.15rem; font-weight: 700;">User Dashboard</h1>
+                <p style="margin: 0.15rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Indoor farm control center</p>
+            </div>
+            <div class="dashboard-topbar-actions">
+                <button type="button" class="icon-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button type="button" class="icon-btn" id="rtl-toggle" title="Toggle text direction" aria-label="Toggle RTL">
+                    <i class="fas fa-globe"></i>
+                </button>
+                <a href="#alerts" class="icon-btn" title="Notifications" aria-label="Notifications"><i class="fas fa-bell" aria-hidden="true"></i></a>
+                <a href="#settings" class="icon-btn" title="Profile" aria-label="Profile settings"><i class="fas fa-user-circle" aria-hidden="true"></i></a>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <p style="margin-bottom: 1.5rem; font-size: 1.05rem;">Welcome back, <strong>Jordan</strong>. Here is a snapshot of your indoor farm today.</p>
+
+            <section id="overview" class="dashboard-panel" style="margin-top: 0;">
+                <h2>Overview</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Active systems, quick health signals, and what needs attention in the next 24 hours.</p>
+                <div class="dashboard-metrics">
+                    <div class="metric-card">
+                        <h3>Active zones</h3>
+                        <p class="metric-value">4</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Avg. pH (24h)</h3>
+                        <p class="metric-value">6.1</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>EC (mS/cm)</h3>
+                        <p class="metric-value">1.4</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Alerts</h3>
+                        <p class="metric-value">2</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="grow-zones" class="dashboard-panel">
+                <h2>Grow zones</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Name each bay, assign crops, and track light schedules per zone.</p>
+                <div class="dashboard-two-col">
+                    <div style="padding: 1rem; background: var(--bg-alt); border-radius: 8px; border: 1px solid var(--border);">
+                        <strong>Kitchen tier A</strong>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Lettuce mix · 18h light · Next harvest in 5 days</p>
+                    </div>
+                    <div style="padding: 1rem; background: var(--bg-alt); border-radius: 8px; border: 1px solid var(--border);">
+                        <strong>Tower B</strong>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Herbs · 14h light · Nutrient refresh scheduled</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="orders" class="dashboard-panel">
+                <h2>Orders &amp; supply</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Reorder nutrients, filters, and spare pumps from your last supplier.</p>
+                <ul style="list-style: none; font-size: 0.95rem;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">Nutrient Pack Alpha — <span style="color: var(--secondary); font-weight: 600;">Ships Apr 14</span></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">pH calibration kit — Delivered</li>
+                    <li style="padding: 0.5rem 0;">Replacement pump seals — In cart</li>
+                </ul>
+                <a href="products.html" class="btn btn-primary" style="margin-top: 1rem;">Browse catalog</a>
+            </section>
+
+            <section id="analytics" class="dashboard-panel">
+                <h2>Analytics</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Yield and resource trends help you tune dosing and lighting over time.</p>
+                <div class="dashboard-metrics">
+                    <div class="metric-card">
+                        <h3>Harvest weight (30d)</h3>
+                        <p class="metric-value">12.4 kg</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Water use vs target</h3>
+                        <p class="metric-value">−6%</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Energy (kWh)</h3>
+                        <p class="metric-value">148</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="crop-health" class="dashboard-panel">
+                <h2>Crop health</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Visual checks, canopy photos, and automated sensor flags in one place.</p>
+                <p style="font-size: 0.95rem;">No critical issues. Tower B showed a brief humidity spike last night; ventilation schedule updated automatically.</p>
+            </section>
+
+            <section id="equipment" class="dashboard-panel">
+                <h2>Equipment</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Pumps, lights, and controllers with firmware and maintenance logs.</p>
+                <div class="dashboard-two-col">
+                    <div>
+                        <strong>LED driver #2</strong>
+                        <p style="margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Firmware 2.3.1 · OK</p>
+                    </div>
+                    <div>
+                        <strong>Dosing pump</strong>
+                        <p style="margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Clean cycle due in 9 days</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reports" class="dashboard-panel">
+                <h2>Reports</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Export compliance or grow logs for retail partners and educators.</p>
+                <button type="button" class="btn btn-secondary">Download monthly summary (PDF)</button>
+            </section>
+
+            <section id="alerts" class="dashboard-panel">
+                <h2>Notifications</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">System messages and reminders.</p>
+                <ul style="list-style: none; font-size: 0.95rem;">
+                    <li style="padding: 0.65rem 0; border-bottom: 1px solid var(--border);">Low reservoir: Kitchen tier A — refill suggested</li>
+                    <li style="padding: 0.65rem 0;">New guide: “Tuning EC for herbs”</li>
+                </ul>
+            </section>
+
+            <section id="settings" class="dashboard-panel">
+                <h2>Profile &amp; settings</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Account details, units, notification channels, and API keys for integrations.</p>
+                <p style="font-size: 0.95rem; margin-bottom: 1rem;">Signed in as <strong>jordan@example.com</strong> · Metric units · Email alerts on</p>
+                <a href="login.html" class="btn btn-secondary">Sign out on this device</a>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+            var links = document.querySelectorAll('.dashboard-nav a');
+            var sections = document.querySelectorAll('.dashboard-content section[id]');
+            function setCurrent(hash) {
+                var id = (hash || '#overview').replace('#', '') || 'overview';
+                links.forEach(function (a) {
+                    if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'page');
+                    else a.removeAttribute('aria-current');
+                });
+            }
+            links.forEach(function (a) {
+                a.addEventListener('click', function () {
+                    setCurrent(a.getAttribute('href'));
+                });
+            });
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (en.isIntersecting) setCurrent('#' + en.target.id);
+                });
+            }, { root: document.querySelector('.dashboard-content'), threshold: 0.35 });
+            sections.forEach(function (s) { obs.observe(s); });
+        });
+    </script>
+</body>
+</html>

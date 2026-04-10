@@ -6,22 +6,47 @@
     <title>Login - HydroGrow Account</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            var d = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', d);
+        })();
+    </script>
     <style>
-        body {
+        body.auth-page-body {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             background-color: var(--bg-alt);
-            padding: 20px;
+            padding: 24px;
+        }
+        .auth-shell {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+        }
+        .auth-toolbar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        [dir="rtl"] .auth-toolbar {
+            right: auto;
+            left: 0;
         }
         .auth-card {
             background: var(--card);
-            padding: 40px;
+            padding: 40px 32px 36px;
+            padding-top: 52px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             width: 100%;
-            max-width: 400px;
             border: 1px solid var(--border);
             text-align: center;
         }
@@ -29,7 +54,7 @@
             color: var(--primary);
             font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -49,25 +74,45 @@
         .form-group input {
             width: 100%;
             padding: 12px;
-            padding-right: 40px;
             border: 1px solid var(--border);
             border-radius: 8px;
             background-color: var(--bg);
             color: var(--text);
+            box-sizing: border-box;
         }
-        .eye-icon {
+        .input-with-toggle {
+            position: relative;
+        }
+        .input-with-toggle input {
+            padding-inline-end: 48px;
+        }
+        .password-toggle {
             position: absolute;
-            right: 12px;
-            bottom: 12px;
+            inset-inline-end: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            padding: 8px;
             cursor: pointer;
             color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .password-toggle svg {
+            width: 20px;
+            height: 20px;
         }
         .auth-options {
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.85rem;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .auth-options label {
             display: flex;
@@ -76,7 +121,7 @@
             cursor: pointer;
         }
         .social-login {
-            margin-top: 30px;
+            margin-top: 28px;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -87,17 +132,27 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--border);
             border-radius: 8px;
             background: var(--bg);
             cursor: pointer;
             font-weight: 500;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text);
             transition: var(--transition);
         }
-        .social-btn:hover { background-color: var(--border); }
+        @media (hover: hover) and (pointer: fine) {
+            .social-btn:hover { background-color: var(--bg-alt); }
+        }
+        .social-btn svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
         .auth-footer {
-            margin-top: 25px;
+            margin-top: 22px;
             font-size: 0.9rem;
             color: var(--text-muted);
         }
@@ -108,60 +163,72 @@
         [data-theme="dark"] .auth-footer a { color: var(--secondary); }
     </style>
 </head>
-<body>
+<body class="auth-page-body">
 
-    <div class="auth-card">
-        <a href="index.html" class="auth-logo">
-            <i class="fas fa-leaf"></i>
-            <span>HydroGrow</span>
-        </a>
-        
-        <form action="dashboard.html">
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="name@company.com" required>
-            </div>
-            <div class="form-group" style="margin-bottom: 15px;">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-                <i class="fas fa-eye eye-icon" id="togglePassword"></i>
-            </div>
-            
-            <div class="auth-options">
-                <label>
-                    <input type="checkbox"> Remember Me
-                </label>
-                <a href="#" style="color: var(--primary);">Forgot Password?</a>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
-        </form>
-        
-        <div class="social-login">
-            <button class="social-btn">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" alt="Google">
-                Sign in with Google
+    <div class="auth-shell">
+        <div class="auth-toolbar">
+            <button type="button" class="icon-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
             </button>
-            <button class="social-btn">
-                <i class="fab fa-apple fa-lg"></i>
-                Sign in with Apple
+            <button type="button" class="icon-btn" id="rtl-toggle" title="Toggle text direction" aria-label="Toggle RTL">
+                <i class="fas fa-globe"></i>
             </button>
         </div>
-        
-        <div class="auth-footer">
-            Don't have an account? <a href="register.html">Sign Up</a>
+
+        <div class="auth-card">
+            <a href="index.html" class="auth-logo">
+                <i class="fas fa-leaf" aria-hidden="true"></i>
+                <span>HydroGrow</span>
+            </a>
+
+            <form action="dashboard.html">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="name@company.com" required autocomplete="email">
+                </div>
+                <div class="form-group" style="margin-bottom: 14px;">
+                    <label for="password">Password</label>
+                    <div class="input-with-toggle">
+                        <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+                        <button type="button" class="password-toggle" data-password-toggle="password" title="Show password" aria-label="Show password">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="auth-options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember Me
+                    </label>
+                    <a href="#" style="color: var(--primary); font-weight: 600;">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+
+            <div class="social-login">
+                <button type="button" class="social-btn" title="Sign in with Google">
+                    <span style="font-weight:800;font-size:0.95rem;width:22px;display:inline-flex;justify-content:center;font-family:Inter,sans-serif" aria-hidden="true">G</span>
+                    <span>Sign in with Google</span>
+                </button>
+                <button type="button" class="social-btn" title="Sign in with Apple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 3c.9 0 1.7.4 2.2 1 .5-.6 1.3-1 2.1-1 .3 0 .6 0 .9.1-.6.9-1 2-1 3.1 0 1.1.4 2.1 1 2.9-.5.1-1 .2-1.5.2-1 0-1.9-.4-2.7-1-.8.6-1.7 1-2.7 1-.5 0-1-.1-1.4-.3.7-.8 1.1-1.9 1.1-3 0-1.2-.4-2.3-1.1-3.1.3-.1.6-.1.9-.1z"/><path d="M9 10c-2.2 1.5-3.5 4-3 6.8.4 2.2 2.2 3.7 4.5 3.7h3c2.3 0 4.1-1.5 4.5-3.7.5-2.8-.8-5.3-3-6.8"/></svg>
+                    <span>Sign in with Apple</span>
+                </button>
+                <button type="button" class="social-btn" title="Sign in with GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <span>Sign in with GitHub</span>
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="register.html">Sign Up</a>
+            </div>
         </div>
     </div>
 
-    <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
-
-        togglePassword.addEventListener('click', function (e) {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
-        });
-    </script>
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/auth-ui.js"></script>
 </body>
 </html>

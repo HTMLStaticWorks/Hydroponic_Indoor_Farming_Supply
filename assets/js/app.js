@@ -1,40 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const rtlToggle = document.getElementById('rtl-toggle');
     const html = document.documentElement;
     const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.querySelector('nav');
+    const navMenu = document.querySelector('nav#main-nav');
     const navActions = document.querySelector('.nav-actions');
 
-    // Theme Management
+    function runLucide() {
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+            lucide.createIcons();
+        }
+    }
+
     const initTheme = () => {
         const currentTheme = localStorage.getItem('theme') || 'light';
         html.setAttribute('data-theme', currentTheme);
-        updateThemeIcon(currentTheme);
     };
 
     const toggleTheme = () => {
         const newTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
     };
 
-    function updateThemeIcon(theme) {
-        document.querySelectorAll('#theme-toggle i').forEach(icon => {
-            if (theme === 'dark') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        });
-    }
+    document.querySelectorAll('.theme-toggle-btn, #theme-toggle').forEach((btn) => {
+        btn.addEventListener('click', toggleTheme);
+    });
 
-    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    initTheme();
 
-    // RTL Management
     const initRTL = () => {
         const currentDir = localStorage.getItem('dir') || 'ltr';
         html.setAttribute('dir', currentDir);
@@ -46,78 +38,86 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('dir', newDir);
     };
 
-    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    document.querySelectorAll('.rtl-toggle-btn, #rtl-toggle').forEach((btn) => {
+        btn.addEventListener('click', toggleRTL);
+    });
 
-    initTheme();
     initRTL();
 
-    // Mobile Menu & Side Drawer
-    if (menuToggle && navMenu) {
+    runLucide();
 
-        // Create Mobile Actions Container
+    const menuIconOpen = menuToggle ? menuToggle.querySelector('.menu-icon-open') : null;
+    const menuIconClose = menuToggle ? menuToggle.querySelector('.menu-icon-close') : null;
+
+    function setMenuOpenVisual(open) {
+        if (menuIconOpen) menuIconOpen.hidden = open;
+        if (menuIconClose) menuIconClose.hidden = !open;
+        runLucide();
+    }
+
+    if (menuToggle && navMenu) {
         const mobileActions = document.createElement('div');
         mobileActions.className = 'mobile-nav-actions';
 
-        // Clone action buttons for mobile — exclude menu-toggle to avoid duplicate hamburger
         if (navActions) {
             const clones = navActions.cloneNode(true);
-            const clonedToggle = clones.querySelector('.menu-toggle');
-            if (clonedToggle) clonedToggle.remove();
+            const clonedMenuToggle = clones.querySelector('.menu-toggle');
+            if (clonedMenuToggle) clonedMenuToggle.remove();
+            clones.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+            clones.querySelectorAll('.theme-toggle-btn').forEach((btn) => {
+                btn.addEventListener('click', toggleTheme);
+            });
+            clones.querySelectorAll('.rtl-toggle-btn').forEach((btn) => {
+                btn.addEventListener('click', toggleRTL);
+            });
             mobileActions.appendChild(clones);
-
-            // Re-attach listeners to clones
-            const mThemeToggle = clones.querySelector('#theme-toggle');
-            const mRtlToggle   = clones.querySelector('#rtl-toggle');
-            if (mThemeToggle) mThemeToggle.addEventListener('click', toggleTheme);
-            if (mRtlToggle)   mRtlToggle.addEventListener('click', toggleRTL);
         }
 
         navMenu.appendChild(mobileActions);
 
-        // Backdrop: above header (z 900) but below nav (z 1100)
         const backdrop = document.createElement('div');
-        backdrop.style.cssText =
-            'position:fixed;top:0;left:0;width:100%;height:100%;' +
-            'background:rgba(0,0,0,0.5);z-index:1050;display:none;';
+        backdrop.className = 'nav-backdrop';
+        backdrop.setAttribute('aria-hidden', 'true');
         document.body.appendChild(backdrop);
 
-        // Open / close the nav drawer
         const openMenu = () => {
             navMenu.classList.add('active');
             document.body.classList.add('nav-active');
-            backdrop.style.display = 'block';
-            menuToggle.classList.remove('fa-bars');
-            menuToggle.classList.add('fa-times');
+            backdrop.classList.add('is-visible');
+            setMenuOpenVisual(true);
         };
 
         const closeMenu = () => {
             navMenu.classList.remove('active');
             document.body.classList.remove('nav-active');
-            backdrop.style.display = 'none';
-            menuToggle.classList.remove('fa-times');
-            menuToggle.classList.add('fa-bars');
+            backdrop.classList.remove('is-visible');
+            setMenuOpenVisual(false);
         };
 
         const toggleMenu = () => {
-            navMenu.classList.contains('active') ? closeMenu() : openMenu();
+            if (navMenu.classList.contains('active')) closeMenu();
+            else openMenu();
         };
 
         menuToggle.addEventListener('click', toggleMenu);
         backdrop.addEventListener('click', closeMenu);
 
-        // Nav link taps — close menu first, then navigate explicitly
-        // (iOS/Android can suppress default link behavior inside overflow:auto containers)
-        navMenu.querySelectorAll('ul li a').forEach(link => {
+        navMenu.querySelectorAll('ul li a').forEach((link) => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-
-                // Anchor-only links (#) handled by smooth scroll below — skip
                 if (!href || href === '#') {
                     closeMenu();
                     return;
                 }
-
-                // Page navigation links — explicitly navigate after closing menu
+                if (href.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        closeMenu();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    return;
+                }
                 e.preventDefault();
                 closeMenu();
                 setTimeout(() => {
@@ -127,8 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
@@ -140,15 +139,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Reveal Animation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
 
-    document.querySelectorAll('.card, .section-title, .hero-content').forEach(el => observer.observe(el));
+    document.querySelectorAll('.card, .section-title, .hero-content').forEach((el) => observer.observe(el));
+
+    // Back to Top Button Logic
+    const backToTop = document.createElement('button');
+    backToTop.id = 'back-to-top';
+    backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backToTop.setAttribute('title', 'Back to Top');
+    backToTop.setAttribute('aria-label', 'Back to Top');
+    document.body.appendChild(backToTop);
+
+    const toggleBackToTop = () => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    };
+
+    window.addEventListener('scroll', toggleBackToTop);
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
