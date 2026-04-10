@@ -1,177 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Login - AgriCulture Hydroponics</title>
-  <link href="assets/img/logo.png" rel="icon">
-  <link href="assets/img/logo.png" rel="apple-touch-icon">
-  
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  
-  <!-- Shared Styles (needed for variables and floating controls) -->
-  <link href="assets/css/theme-rtl.css" rel="stylesheet">
-  
-  <style>
-    body {
-      background: linear-gradient(135deg, var(--light-section-bg) 0%, var(--background-color) 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .login-card {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px var(--shadow-color);
-      width: 100%;
-      max-width: 400px;
-      padding: 40px;
-    }
-    .logo-centered {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent-color);
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .btn-social {
-      width: 100%;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--surface-color);
-      color: var(--default-color);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      box-shadow: 0 2px 4px var(--shadow-color);
-    }
-    .btn-social:hover {
-      background: var(--accent-color);
-      color: white !important;
-      border-color: var(--accent-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(46, 163, 89, 0.25);
-    }
-    .btn-social i {
-      font-size: 1.1rem;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 20px 0;
-      opacity: 0.5;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .divider:not(:empty)::before { margin-right: .25em; }
-    .divider:not(:empty)::after { margin-left: .25em; }
-
-    @media (max-width: 991.98px) {
-      .login-meta-row {
-        flex-wrap: nowrap;
-        gap: 10px;
-      }
-
-      .login-meta-row .form-check-label,
-      .login-meta-row a {
-        white-space: nowrap;
-        font-size: 0.78rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HydroGrow Account</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--bg-alt);
+            padding: 20px;
+        }
+        .auth-card {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .auth-logo {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        [data-theme="dark"] .auth-logo { color: var(--secondary); }
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            padding-right: 40px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        .eye-icon {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        .auth-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+        .auth-options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .social-login {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .social-btn:hover { background-color: var(--border); }
+        .auth-footer {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        [data-theme="dark"] .auth-footer a { color: var(--secondary); }
+    </style>
 </head>
+<body>
 
-<body class="auth-page">
-
-  <div class="login-card">
-    <a href="index.html" class="logo-centered d-block text-decoration-none mb-4">
-      <img src="assets/img/logo.png" alt="AgriCulture Logo" class="mx-auto d-block" style="max-height: 50px;">
-    </a>
-    <div class="text-center mb-4">
-      <h3 class="fw-bold">Welcome Back</h3>
-      <p class="text-muted small">Sign in to your hydroponic dashboard</p>
+    <div class="auth-card">
+        <a href="index.html" class="auth-logo">
+            <i class="fas fa-leaf"></i>
+            <span>HydroGrow</span>
+        </a>
+        
+        <form action="dashboard.html">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="name@company.com" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+                <i class="fas fa-eye eye-icon" id="togglePassword"></i>
+            </div>
+            
+            <div class="auth-options">
+                <label>
+                    <input type="checkbox"> Remember Me
+                </label>
+                <a href="#" style="color: var(--primary);">Forgot Password?</a>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        </form>
+        
+        <div class="social-login">
+            <button class="social-btn">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" alt="Google">
+                Sign in with Google
+            </button>
+            <button class="social-btn">
+                <i class="fab fa-apple fa-lg"></i>
+                Sign in with Apple
+            </button>
+        </div>
+        
+        <div class="auth-footer">
+            Don't have an account? <a href="register.html">Sign Up</a>
+        </div>
     </div>
 
-    <form>
-      <div class="mb-3">
-        <label class="form-label small fw-bold">Email Address</label>
-        <input type="email" class="form-control" placeholder="name@example.com">
-      </div>
-      <div class="mb-3">
-        <label class="form-label small fw-bold">Password</label>
-        <div class="input-group">
-          <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
-          <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('passwordInput')" aria-label="Toggle Password Visibility">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-      </div>
-      
-      <div class="d-flex justify-content-between align-items-center mb-4 login-meta-row">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="rememberMe">
-          <label class="form-check-label small" for="rememberMe">Remember me</label>
-        </div>
-        <a href="#" class="small text-success">Forgot Password?</a>
-      </div>
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
 
-      <button type="submit" class="btn btn-success w-100 py-2 mb-3">Sign In</button>
-      
-      <div class="divider small fw-bold">OR</div>
-      
-      <div class="row g-2 mb-3">
-        <div class="col-4">
-          <button type="button" class="btn-social" title="Continue with Google" aria-label="Continue with Google">
-            <i class="bi bi-google"></i>
-          </button>
-        </div>
-        <div class="col-4">
-          <button type="button" class="btn-social" title="Continue with Facebook" aria-label="Continue with Facebook">
-            <i class="bi bi-facebook"></i>
-          </button>
-        </div>
-        <div class="col-4">
-          <button type="button" class="btn-social" title="Continue with Apple" aria-label="Continue with Apple">
-            <i class="bi bi-apple"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="text-center mt-4 pt-3 border-top">
-        <p class="small mb-0">Don't have an account? <a href="register.html" class="text-success fw-bold">Create Account</a></p>
-      </div>
-    </form>
-  </div>
-
-  <script src="assets/js/theme-rtl.js"></script>
-  <script>
-    function togglePassword(id) {
-      const input = document.getElementById(id);
-      input.type = input.type === 'password' ? 'text' : 'password';
-      const icon = event.currentTarget.querySelector('i');
-      icon.classList.toggle('bi-eye');
-      icon.classList.toggle('bi-eye-slash');
-    }
-  </script>
+        togglePassword.addEventListener('click', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </body>
-
 </html>
-
-

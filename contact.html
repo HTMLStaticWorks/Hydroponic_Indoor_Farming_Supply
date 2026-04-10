@@ -1,346 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - AgriCulture Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/logo.png" rel="icon">
-  <link href="assets/img/logo.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-  <!-- Theme & RTL CSS File -->
-  <link href="assets/css/theme-rtl.css" rel="stylesheet">
-  <!-- Custom Sections CSS -->
-  <link href="assets/css/custom-sections.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: AgriCulture
-  * Template URL: https://bootstrapmade.com/agriculture-bootstrap-website-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HydroGrow Support</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        .contact-form {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .info-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .info-item i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: var(--bg-alt);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        @media (max-width: 1100px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .contact-form, .contact-info { text-align: left; }
+            .info-item { justify-content: flex-start; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="contact-page">
-
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="AgriCulture Logo">
-      </a>
-
-      <nav id="navmenu" class="navmenu d-none d-xl-block">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="home2.html">Home 2</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions d-flex align-items-center gap-2">
-        <button class="theme-toggle btn btn-link p-0" aria-label="Toggle theme">
-          <i class="bi bi-moon-fill"></i>
-        </button>
-        
-        <a href="cart-page.html" class="cart-link" aria-label="View Cart">
-          <i class="bi bi-cart-fill"></i>
-          <span class="cart-badge">0</span>
-        </a>
-
-        <div class="auth-buttons d-none d-xl-flex gap-2 ms-2">
-          <a href="login.html" class="btn btn-outline-success btn-sm px-3">Login</a>
-                  </div>
-
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Mobile Nav Drawer -->
-  <div class="mobile-nav-overlay"></div>
-  <div class="mobile-nav-drawer d-xl-none">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <div class="logo">AgriCulture</div>
-      <i class="bi bi-x fs-2 cursor-pointer mobile-nav-toggle"></i>
-    </div>
-    <ul class="list-unstyled flex-grow-1">
-      <li class="mb-3"><a href="index.html" class="d-flex align-items-center gap-2"><i class="bi bi-house"></i> Home</a></li>
-      <li class="mb-3"><a href="home2.html" class="d-flex align-items-center gap-2"><i class="bi bi-house-door"></i> Home 2</a></li>
-      <li class="mb-3"><a href="about.html" class="d-flex align-items-center gap-2"><i class="bi bi-info-circle"></i> About Us</a></li>
-      <li class="mb-3"><a href="services.html" class="d-flex align-items-center gap-2"><i class="bi bi-gear"></i> Services</a></li>
-            <li class="mb-3"><a href="blog.html" class="d-flex align-items-center gap-2"><i class="bi bi-newspaper"></i> Blog</a></li>
-      <li class="mb-3"><a href="contact.html" class="d-flex align-items-center gap-2 active"><i class="bi bi-envelope"></i> Contact</a></li>
-      <li class="mb-3"><a href="dashboard.html" class="d-flex align-items-center gap-2"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-    </ul>
-    <div class="mt-auto d-flex flex-column gap-2">
-      <a href="login.html" class="btn btn-outline-success w-100">Login</a>
-          </div>
-  </div>
-
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/page-title-bg.webp);">
-      <div class="container position-relative">
-        <h1>Contact</h1>
+    <header>
+        <div class="logo">
+            <i class="fas fa-leaf"></i>
+            <span>HydroGrow</span>
         </div>
-    </div><!-- End Page Title -->
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index2.html">Home2</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">Company</a></li>
+                <li><a href="solutions.html">What We Do</a></li>
+                <li><a href="applications.html">Applications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+            <a href="cart.html" class="icon-btn" title="Cart">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="login.html" title="Profile">
+                <i class="fas fa-user"></i>
+            </a>
+            <button class="icon-btn" id="theme-toggle" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">
+                <i class="fas fa-globe"></i>
+            </button>
+            <i class="fas fa-bars menu-toggle" id="menu-toggle"></i>
+        </div>
+    </header>
 
-      <div class="container" data-aos="fade">
-
-        <div class="row gy-5 gx-lg-5">
-
-          <div class="col-lg-4">
-
-            <div class="info">
-              <h3>Get in touch</h3>
-              <p>Et id eius voluptates atque nihil voluptatem enim in tempore minima sit ad mollitia commodi minus.</p>
-
-              <div class="info-item d-flex">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h4>Location:</h4>
-                  <p>22, Mahatma Gandhi Rd, Craig Park Layout, Ashok Nagar, Bengaluru, Karnataka 560001, India</p>
-                  <p class="mb-0 text-muted small"><i class="bi bi-star me-1"></i> No reviews</p>
-                  <a href="https://maps.google.com/?q=22,+Mahatma+Gandhi+Rd,+Craig+Park+Layout,+Ashok+Nagar,+Bengaluru,+Karnataka+560001" 
-                     target="_blank" rel="noopener" 
-                     onclick="window.open(this.href, '_blank'); return false;"
-                     class="btn btn-success mt-3 px-4 py-2 fw-bold" 
-                     style="border-radius: 50px; pointer-events: auto !important; position: relative; z-index: 999;">
-                     <i class="bi bi-map me-1"></i> Open in Maps
-                  </a>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h4>Email:</h4>
-                  <p>hello@agriculture.in</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-phone flex-shrink-0"></i>
-                <div>
-                  <h4>Call:</h4>
-                  <p>+91 98765 43210</p>
-                </div>
-              </div><!-- End Info Item -->
-
+    <main>
+        <section style="background-color: var(--bg-alt); text-align: center; padding: 60px 5%;">
+            <div class="container">
+                <h1 class="section-title">Get In Touch</h1>
+                <p>Have questions about indoor farming? Our experts are here to help.</p>
             </div>
+        </section>
 
-          </div>
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+        <section>
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <div>
+                            <h2 style="margin-bottom: 20px;">Contact Information</h2>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Our HQ</h4>
+                                    <p>123 Green Valley Road, Eco Tech Park, CA 90210</p>
+                                </div>
+                            </div>
+                            <div class="info-item" style="margin-top: 20px;">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+1 234 567 890</p>
+                                </div>
+                            </div>
+                            <div class="info-item" style="margin-top: 20px;">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>hello@hydrogrow.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-placeholder">
+                            <p><i class="fas fa-map"></i> Global Map Integration</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-    
-
-
-    <!-- Call To Action Section -->
-    <section class="custom-section custom-cta" data-aos="fade-up">
-      <div class="container text-center">
-        <h2>Let's Work Together</h2>
-        <p>Ready to start your indoor farming journey? We provide the tools, the technology, and the expertise to help you grow cleaner and smarter.</p>
-        <a href="contact.html" class="btn-cta-primary">Contact Us</a>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="custom-section custom-testimonials" data-aos="fade-up">
-      <div class="container">
-        <div class="section-title text-center">
-          <h2>What Our Clients Say</h2>
-        </div>
-        <div class="row g-4 justify-content-center">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonial-card-v2">
-              <i class="bi bi-quote quote-icon"></i>
-              <p class="testimonial-text">"I used the contact page for a pump issue and got a clear response the same
-                day, including the exact settings I needed to test before replacing anything."</p>
-              <div class="client-info">
-                <img src="assets/img/blog/comments-5.jpg" alt="Portrait of Brett Collins" class="client-avatar">
-                <div>
-                  <h5>Brett Collins</h5>
-                  <span>Customer support ticket, Atlanta</span>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="testimonial-card-v2">
-              <i class="bi bi-quote quote-icon"></i>
-              <p class="testimonial-text">"Their team followed up after my inquiry with a parts list and setup notes,
-                which saved me from ordering components that would not fit my rack."</p>
-              <div class="client-info">
-                <img src="assets/img/blog/comments-6.jpg" alt="Portrait of Anika Bose" class="client-avatar">
-                <div>
-                  <h5>Anika Bose</h5>
-                  <span>Repeat buyer, Charlotte</span>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="logo">
+                        <i class="fas fa-leaf"></i>
+                        <span>HydroGrow</span>
+                    </div>
+                    <p>Sustainable indoor farming solutions for a greener future.</p>
+                    <div class="footer-socials">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="testimonial-card-v2">
-              <i class="bi bi-quote quote-icon"></i>
-              <p class="testimonial-text">"Even before checkout, I was able to confirm shipping timelines and nutrient
-                compatibility with a real person. That made the purchase decision straightforward."</p>
-              <div class="client-info">
-                <img src="assets/img/testimonials/testimonials-2.jpg" alt="Portrait of Jordan Miles"
-                  class="client-avatar">
-                <div>
-                  <h5>Jordan Miles</h5>
-                  <span>First-time buyer, Nashville</span>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
                 </div>
-              </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <p>hello@hydrogrow.com</p>
+                    <p>+1 234 567 890</p>
+                </div>
             </div>
-          </div>
+            <p>&copy; 2026 HydroGrow. All rights reserved.</p>
         </div>
-      </div>
-      <div class="mt-5" data-aos="fade-up">
-        <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps?q=22%2C%20Mahatma%20Gandhi%20Rd%2C%20Craig%20Park%20Layout%2C%20Ashok%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560001&z=17&output=embed" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div><!-- End Google Maps -->
+    </footer>
 
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="custom-section custom-newsletter" data-aos="fade-up">
-      <div class="container text-center">
-        <div class="section-title">
-          <h2>Subscribe to Our Newsletter</h2>
-          <p>Get the latest tips, guides, and product updates delivered straight to your inbox.</p>
-        </div>
-        <div class="newsletter-form-container">
-          <form action="forms/newsletter.php" class="form-inline-custom php-email-form">
-            <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
-            <button type="submit" class="btn-subscribe">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer id="footer" class="footer dark-background py-5">
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <a href="index.html" class="logo d-flex align-items-center mb-3">
-            <img src="assets/img/logo.png" alt="AgriCulture Logo">
-          </a>
-          <p>Professional hydroponic supplies for the modern indoor farmer. Grow cleaner, grow smarter, grow anywhere.</p>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-                      </ul>
-        </div>
-
-        <div class="col-lg-5 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Info</h4>
-          <p>22 MG Road</p>
-          <p>Bengaluru, Karnataka 560001</p>
-          <p class="mt-3"><strong>Phone:</strong> <span>+91 98765 43210</span></p>
-          <p><strong>Email:</strong> <span>hello@agriculture.in</span></p>
-        </div>
-      </div>
-
-      <div class="copyright text-center mt-5 pt-4 border-top">
-        <p>© Copyright <strong><span>AgriCulture</span></strong>. All Rights Reserved</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Theme & RTL JS File -->
-  <script src="assets/js/theme-rtl.js"></script>
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <!-- Cart JS File -->
-  <script src="assets/js/cart.js"></script>
-
+    <script src="assets/js/app.js"></script>
 </body>
-
 </html>
-
-
-

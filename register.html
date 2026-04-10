@@ -1,205 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Register - AgriCulture Hydroponics</title>
-  <link href="assets/img/logo.png" rel="icon">
-  <link href="assets/img/logo.png" rel="apple-touch-icon">
-  
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  
-  <!-- Shared Styles -->
-  <link href="assets/css/theme-rtl.css" rel="stylesheet">
-  
-  <style>
-    body {
-      background: linear-gradient(135deg, var(--light-section-bg) 0%, var(--background-color) 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
-    .register-card {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px var(--shadow-color);
-      width: 100%;
-      max-width: 500px;
-      padding: 40px;
-    }
-    .logo-centered {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent-color);
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .btn-social {
-      width: 100%;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--surface-color);
-      color: var(--default-color);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      box-shadow: 0 2px 4px var(--shadow-color);
-    }
-    .btn-social:hover {
-      background: var(--accent-color);
-      color: white !important;
-      border-color: var(--accent-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(46, 163, 89, 0.25);
-    }
-    .btn-social i {
-      font-size: 1.1rem;
-    }
-
-    .divider {
-
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 20px 0;
-      opacity: 0.5;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .strength-bar {
-      height: 4px;
-      width: 100%;
-      background: #eee;
-      margin-top: 5px;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .strength-level {
-      height: 100%;
-      width: 30%;
-      background: #ffc107;
-      transition: 0.3s;
-    }
-
-    @media (max-width: 991.98px) {
-      .terms-inline .form-check-label {
-        white-space: nowrap;
-        font-size: 0.78rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Join HydroGrow</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--bg-alt);
+            padding: 20px;
+        }
+        .auth-card {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .auth-logo {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        [data-theme="dark"] .auth-logo { color: var(--secondary); }
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        .auth-footer {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        [data-theme="dark"] .auth-footer a { color: var(--secondary); }
+    </style>
 </head>
+<body>
 
-<body class="auth-page">
+    <div class="auth-card">
+        <a href="index.html" class="auth-logo">
+            <i class="fas fa-leaf"></i>
+            <span>HydroGrow</span>
+        </a>
+        
+        <h2>Create an Account</h2>
+        <p style="margin-bottom: 30px; opacity: 0.7;">Start your indoor farming journey today.</p>
 
-  <div class="register-card">
-    <a href="index.html" class="logo-centered d-block text-decoration-none mb-4">
-      <img src="assets/img/logo.png" alt="AgriCulture Logo" class="mx-auto d-block" style="max-height: 50px;">
-    </a>
-    <div class="text-center mb-4">
-      <h3 class="fw-bold">Create Account</h3>
-      <p class="text-muted small">Start your hydroponic journey today</p>
+        <form action="login.html">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="name@company.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Min. 8 characters" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Register</button>
+        </form>
+        
+        <div class="auth-footer">
+            Already have an account? <a href="login.html">Login</a>
+        </div>
     </div>
 
-    <form>
-      <div class="mb-3">
-        <label class="form-label small fw-bold">First Name</label>
-        <input type="text" class="form-control" placeholder="John">
-      </div>
-      <div class="mb-3">
-        <label class="form-label small fw-bold">Last Name</label>
-        <input type="text" class="form-control" placeholder="Doe">
-      </div>
-      
-      <div class="mb-3">
-        <label class="form-label small fw-bold">Email Address</label>
-        <input type="email" class="form-control" placeholder="name@example.com">
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label small fw-bold">Password</label>
-        <div class="input-group">
-          <input type="password" class="form-control" id="regPass" placeholder="Create password">
-          <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('regPass')">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-        <div class="strength-bar"><div class="strength-level"></div></div>
-        <small class="text-muted" style="font-size: 0.7rem;">Password strength: Medium</small>
-      </div>
-
-      <div class="mb-4">
-        <label class="form-label small fw-bold">Confirm Password</label>
-        <div class="input-group">
-          <input type="password" class="form-control" id="regConfirm" placeholder="Confirm password">
-          <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('regConfirm')">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-      </div>
-      
-      <div class="form-check mb-4 terms-inline">
-        <input class="form-check-input" type="checkbox" id="termsAgree">
-        <label class="form-check-label small" for="termsAgree">
-          I agree to the <a href="#" class="text-success">Terms of Service</a> and <a href="#" class="text-success">Privacy Policy</a>
-        </label>
-      </div>
-
-      <button type="submit" class="btn btn-success w-100 py-2 mb-3">Create Account</button>
-      
-      <div class="divider small fw-bold">OR</div>
-      
-      <div class="row g-2 mb-3">
-        <div class="col-4">
-          <button type="button" class="btn-social" title="Continue with Google" aria-label="Continue with Google">
-            <i class="bi bi-google"></i>
-          </button>
-        </div>
-        <div class="col-4">
-          <button type="button" class="btn-social" title="Continue with Facebook" aria-label="Continue with Facebook">
-            <i class="bi bi-facebook"></i>
-          </button>
-        </div>
-        <div class="col-4">
-          <button type="button" class="btn-social" title="Continue with Apple" aria-label="Continue with Apple">
-            <i class="bi bi-apple"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="text-center mt-4 pt-3 border-top">
-        <p class="small mb-0">Already have an account? <a href="login.html" class="text-success fw-bold">Sign In</a></p>
-      </div>
-    </form>
-  </div>
-
-  <script src="assets/js/theme-rtl.js"></script>
-  <script>
-    function togglePassword(id) {
-      const input = document.getElementById(id);
-      input.type = input.type === 'password' ? 'text' : 'password';
-      const icon = event.currentTarget.querySelector('i');
-      icon.classList.toggle('bi-eye');
-      icon.classList.toggle('bi-eye-slash');
-    }
-  </script>
 </body>
-
 </html>
-
-
