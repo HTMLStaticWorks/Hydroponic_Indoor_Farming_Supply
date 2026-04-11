@@ -144,7 +144,15 @@
             transition: var(--transition);
         }
         @media (hover: hover) and (pointer: fine) {
-            .social-btn:hover { background-color: var(--bg-alt); }
+            .social-btn:hover { 
+                background-color: var(--bg-alt); 
+                border-color: var(--secondary);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            [data-theme="dark"] .social-btn:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            }
         }
         .social-btn svg {
             width: 22px;
@@ -161,6 +169,18 @@
             font-weight: 600;
         }
         [data-theme="dark"] .auth-footer a { color: var(--secondary); }
+        .forgot-password-link {
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        [data-theme="dark"] .forgot-password-link {
+            color: var(--secondary);
+        }
+        .forgot-password-link:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body class="auth-page-body">
@@ -184,7 +204,7 @@
             <form action="dashboard.html">
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="name@company.com" required autocomplete="email">
+                    <input type="email" id="email" name="email" placeholder="" required autocomplete="email">
                 </div>
                 <div class="form-group" style="margin-bottom: 14px;">
                     <label for="password">Password</label>
@@ -200,7 +220,7 @@
                     <label>
                         <input type="checkbox" name="remember"> Remember Me
                     </label>
-                    <a href="#" style="color: var(--primary); font-weight: 600;">Forgot Password?</a>
+                    <a href="#" class="forgot-password-link">Forgot Password?</a>
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>

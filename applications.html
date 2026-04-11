@@ -6,6 +6,45 @@
     <title>Applications - HydroGrow</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* APPLICATIONS PAGE FIXES */
+        @media (max-width: 768px) {
+            #real-life-examples .card-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: center;
+            }
+            
+            #real-life-examples .card-grid > div:first-child {
+                order: -1 !important;
+            }
+            
+            #real-life-examples .card-grid img {
+                height: 250px !important;
+                width: 100% !important;
+                object-fit: cover !important;
+                border-radius: var(--radius);
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            #real-life-examples .card-grid {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+                text-align: center;
+            }
+            
+            #real-life-examples .card-grid > div:first-child {
+                order: -1 !important;
+            }
+            
+            #real-life-examples .card-grid img {
+                height: 300px !important;
+                width: 100% !important;
+                object-fit: cover !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -61,7 +100,7 @@
                         <img src="image/WhatsApp%20Image%202026-04-10%20at%204.08.56%20PM%20(1).jpeg" alt="Strawberries">
                         <div class="card-content">
                             <h3>Berries & Fruits</h3>
-                            <p>Enjoy sweet, juicy strawberries all year round. Our systems provide the perfect nutrient balance for fruiting plants.</p>
+                            <p>Enjoy sweet, juicy strawberries all year round. Our systems provide the perfect nutrient.</p>
                             <a href="products.html" class="btn btn-primary" style="margin-top: 10px;">Shop Kits</a>
                         </div>
                     </div>
@@ -102,19 +141,25 @@
                 <h2 class="section-title text-center">Where HydroGrow Fits</h2>
                 <div class="card-grid">
                     <div class="card">
-                        <i class="fas fa-utensils fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
-                        <h3>Restaurants</h3>
-                        <p>Serve "Farm to Table" ingredients grown right in your dining area.</p>
+                        <div class="card-content">
+                            <i class="fas fa-utensils fa-3x" style="color: var(--secondary); margin-top: 10px;"></i>
+                            <h3>Restaurants</h3>
+                            <p>Serve "Farm to Table" ingredients grown right in your dining area.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <i class="fas fa-school fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
-                        <h3>Education</h3>
-                        <p>Teach students about biology and sustainability with hands-on labs.</p>
+                        <div class="card-content">
+                            <i class="fas fa-school fa-3x" style="color: var(--secondary); margin-top: 10px;"></i>
+                            <h3>Education</h3>
+                            <p>Teach students about biology and sustainability with hands-on labs.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <i class="fas fa-hospital fa-3x" style="color: var(--secondary); margin-bottom: 20px;"></i>
-                        <h3>Hospitals</h3>
-                        <p>Fresh, nutrient-dense food for recovery and therapeutic gardening.</p>
+                        <div class="card-content">
+                            <i class="fas fa-hospital fa-3x" style="color: var(--secondary); margin-top: 10px;"></i>
+                            <h3>Hospitals</h3>
+                            <p>Fresh, nutrient-dense food for recovery and therapeutic gardening.</p>
+                        </div>
                     </div>
                 </div>
             </div>

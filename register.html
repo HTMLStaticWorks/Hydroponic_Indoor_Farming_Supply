@@ -149,6 +149,12 @@
         @media (hover: hover) and (pointer: fine) {
             .social-btn:hover {
                 background-color: var(--bg-alt);
+                border-color: var(--secondary);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            [data-theme="dark"] .social-btn:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             }
         }
 
@@ -170,6 +176,26 @@
         }
 
         [data-theme="dark"] .auth-footer a {
+            color: var(--secondary);
+        }
+        .terms-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .terms-group input {
+            width: auto;
+            margin-top: 4px;
+        }
+        .terms-group a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        [data-theme="dark"] .terms-group a {
             color: var(--secondary);
         }
     </style>
@@ -201,23 +227,23 @@
             <form action="login.html" method="get">
                 <div class="form-group">
                     <label for="firstname">First name</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Alex" required
+                    <input type="text" id="firstname" name="firstname" placeholder="" required
                         autocomplete="given-name">
                 </div>
                 <div class="form-group">
                     <label for="lastname">Last name</label>
-                    <input type="text" id="lastname" name="lastname" placeholder="Rivera" required
+                    <input type="text" id="lastname" name="lastname" placeholder="" required
                         autocomplete="family-name">
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="name@company.com" required
+                    <input type="email" id="email" name="email" placeholder="" required
                         autocomplete="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-with-toggle">
-                        <input type="password" id="password" name="password" placeholder="Min. 8 characters" required
+                        <input type="password" id="password" name="password" placeholder="" required
                             minlength="8" autocomplete="new-password">
                         <button type="button" class="password-toggle" data-password-toggle="password"
                             title="Show password" aria-label="Show password">
@@ -228,7 +254,7 @@
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
                     <div class="input-with-toggle">
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="••••••••"
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder=""
                             required autocomplete="new-password">
                         <button type="button" class="password-toggle" data-password-toggle="confirm-password"
                             title="Show password" aria-label="Show password">
@@ -236,6 +262,11 @@
                         </button>
                     </div>
                 </div>
+
+                <label class="terms-group">
+                    <input type="checkbox" name="terms" required>
+                    <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+                </label>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Register</button>
             </form>

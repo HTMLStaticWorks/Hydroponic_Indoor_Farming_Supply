@@ -72,6 +72,9 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             position: relative;
+            max-width: min(100%, 560px);
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .mock-sidebar {
@@ -125,6 +128,30 @@
 
             .split-hero .hero-image {
                 order: 1;
+            }
+        }
+
+        /* HOME2 Fixes */
+        @media (max-width: 1024px) {
+            .card-grid--three .card img {
+                aspect-ratio: 16 / 10 !important;
+                object-fit: cover !important;
+                height: auto !important;
+            }
+            
+            .card-grid--three .card .card-content div[style*="display: flex"] {
+                gap: 6px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card .card-content {
+                text-align: center;
+            }
+            
+            .card-grid--three .card img {
+                aspect-ratio: 16 / 10 !important;
+                object-fit: cover !important;
             }
         }
     </style>
@@ -209,33 +236,42 @@
             </div>
         </section>
 
-        <!-- Dashboard Preview -->
-        <section id="dashboard-preview" style="background-color: var(--bg-alt);">
+        <!-- How It Works -->
+        <section id="how-it-works" style="background-color: var(--bg-alt);">
             <div class="container">
-                <h2 class="section-title text-center">Smart Integration</h2>
-                <p class="text-center" style="max-width: 600px; margin: 0 auto 40px;">Control every aspect of your
-                    indoor farm through our intuitive dashboard. Tracking moisture, light, and nutrients has never been
-                    easier.</p>
-
-                <div class="dashboard-mockup">
-                    <div class="mock-sidebar"></div>
-                    <div class="mock-content">
-                        <h3>Growth Status: <span style="color: var(--secondary);">Optimal</span></h3>
-                        <div class="mock-charts">
-                            <div class="mock-chart">
-                                <div class="mock-bar" style="height: 70%;"></div>
-                                <div style="position: absolute; bottom: 10px; left: 10px; font-size: 12px;">Water</div>
-                            </div>
-                            <div class="mock-chart">
-                                <div class="mock-bar" style="height: 90%; background: var(--accent);"></div>
-                                <div style="position: absolute; bottom: 10px; left: 10px; font-size: 12px;">Light</div>
-                            </div>
-                            <div class="mock-chart">
-                                <div class="mock-bar" style="height: 50%; background: var(--primary);"></div>
-                                <div style="position: absolute; bottom: 10px; left: 10px; font-size: 12px;">Nutrients
-                                </div>
-                            </div>
+                <h2 class="section-title text-center">How It Works</h2>
+                <div class="card-grid">
+                    <div class="card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="how-it-works-step-image">
+                            <img src="image/WhatsApp%20Image%202026-04-10%20at%204.08.57%20PM.jpeg"
+                                alt="Hydroponic starter kit on a counter" width="200" height="200" loading="lazy">
                         </div>
+                        <h3>1. Choose Your Setup</h3>
+                        <p>Select the kit that fits your space and goals.</p>
+                    </div>
+                    <div class="card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="how-it-works-step-image">
+                            <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.07%20PM%20(1).jpeg"
+                                alt="Vertical hydroponic growing system installed indoors" width="200" height="200" loading="lazy">
+                        </div>
+                        <h3>2. Install System</h3>
+                        <p>Easy-to-follow instructions for quick setup.</p>
+                    </div>
+                    <div class="card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="how-it-works-step-image">
+                            <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.11%20PM%20(3).jpeg"
+                                alt="Plant nutrient solutions and supplements" width="200" height="200" loading="lazy">
+                        </div>
+                        <h3>3. Add Nutrients</h3>
+                        <p>Fuel your plants with our premium solutions.</p>
+                    </div>
+                    <div class="card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="how-it-works-step-image">
+                            <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.02%20PM.jpeg"
+                                alt="Lush indoor herbs and greens ready to harvest" width="200" height="200" loading="lazy">
+                        </div>
+                        <h3>4. Grow & Harvest</h3>
+                        <p>Watch your garden flourish all year round.</p>
                     </div>
                 </div>
             </div>
@@ -253,9 +289,8 @@
                             <h3>Urban Starter Kit</h3>
                             <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$149.00</p>
                             <p>Perfect for beginners. Grows up to 6 plants simultaneously.</p>
-                            <div style="display: flex; gap: 10px; justify-content: center;">
-                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
-                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            <div class="product-card-actions">
+                                <a href="products.html" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -266,9 +301,8 @@
                             <h3>Full Spectrum LED</h3>
                             <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$89.00</p>
                             <p>100W energy-efficient lighting for all growth stages.</p>
-                            <div style="display: flex; gap: 10px; justify-content: center;">
-                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
-                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            <div class="product-card-actions">
+                                <a href="products.html" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -279,9 +313,8 @@
                             <h3>Nutrient Pack Alpha</h3>
                             <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$45.00</p>
                             <p>Rich mineral mix for leafy greens and herbs.</p>
-                            <div style="display: flex; gap: 10px; justify-content: center;">
-                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
-                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            <div class="product-card-actions">
+                                <a href="products.html" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -292,9 +325,8 @@
                             <h3>Hydroponic Tower</h3>
                             <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$399.00</p>
                             <p>Space-saving vertical design for 24 plants.</p>
-                            <div style="display: flex; gap: 10px; justify-content: center;">
-                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
-                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            <div class="product-card-actions">
+                                <a href="products.html" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -305,9 +337,8 @@
                             <h3>Smart pH Monitor</h3>
                             <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$79.00</p>
                             <p>Continuous monitoring with mobile app alerts.</p>
-                            <div style="display: flex; gap: 10px; justify-content: center;">
-                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
-                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            <div class="product-card-actions">
+                                <a href="products.html" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -318,9 +349,8 @@
                             <h3>EcoPump 500</h3>
                             <p style="color: var(--secondary); font-weight: 700; font-size: 1.2rem;">$55.00</p>
                             <p>Silent, durable water pump for medium systems.</p>
-                            <div style="display: flex; gap: 10px; justify-content: center;">
-                                <a href="products.html" class="btn btn-primary" style="min-width: auto; flex: 1;">Add to Cart</a>
-                                <a href="products.html" class="btn btn-secondary" style="min-width: auto; flex: 1;">Details</a>
+                            <div class="product-card-actions">
+                                <a href="products.html" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -329,14 +359,19 @@
         </section>
 
         <!-- Video Section -->
-        <section style="background-color: var(--bg-alt); text-align: center;">
+        <section id="see-it-in-action" style="background-color: var(--bg-alt); text-align: center;">
             <div class="container">
                 <h2 class="section-title">See It In Action</h2>
-                <div
-                    style="position: relative; width: 100%; max-width: 900px; margin: 0 auto; height: 500px; background: #000; border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <span class="card-icon-top" style="margin-bottom:0"><i data-lucide="circle-play"
-                            style="width:80px;height:80px;cursor:pointer" aria-hidden="true"></i></span>
-                    <p style="position: absolute; bottom: 20px; color: white;">Watch: How Hydroponics Works</p>
+                <div class="video-poster-tile">
+                    <img class="video-poster-img"
+                        src="image/WhatsApp%20Image%202026-04-10%20at%204.09.04%20PM.jpeg"
+                        alt="Indoor hydroponic setup preview" width="900" height="500" loading="lazy">
+                    <button type="button" class="video-poster-play" aria-label="Play video: How Hydroponics Works">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </button>
+                    <p class="video-poster-caption">Watch: How Hydroponics Works</p>
                 </div>
             </div>
         </section>

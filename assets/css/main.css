@@ -110,7 +110,9 @@ h1, h2, h3, h4 {
 
 /* Buttons */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px 28px;
     border-radius: 50px;
     font-weight: 600;
@@ -152,6 +154,29 @@ h1, h2, h3, h4 {
 [data-theme="dark"] .btn-secondary:hover {
     background-color: var(--secondary);
     color: var(--bg-dark);
+}
+
+/*
+ * Secondary outline on dark surfaces (hero overlay, primary CTA bands, etc.).
+ * Default .btn-secondary uses --primary green; that fails on dark green/black backdrops.
+ */
+.hero .btn-secondary,
+.section-cta-band .btn-secondary,
+#final-cta .btn-secondary,
+.btn-secondary-on-dark {
+    border-color: rgba(255, 255, 255, 0.95);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.hero .btn-secondary:hover,
+.section-cta-band .btn-secondary:hover,
+#final-cta .btn-secondary:hover,
+.btn-secondary-on-dark:hover {
+    background-color: #ffffff;
+    color: var(--primary);
+    border-color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 /* Header */
@@ -272,6 +297,200 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
     stroke-width: 1.5;
 }
 
+#how-it-works .how-it-works-step-image,
+#product-categories .how-it-works-step-image {
+    margin: 0 auto 1.25rem;
+    max-width: 200px;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+#product-categories .how-it-works-step-image {
+    max-width: 140px;
+    margin-bottom: 0.75rem;
+}
+
+#how-it-works .how-it-works-step-image img,
+#product-categories .how-it-works-step-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+/* Video placeholder: photo poster + high-contrast play control */
+.video-poster-tile {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 320px;
+    height: 50vw;
+    max-height: 500px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-poster-tile .video-poster-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    display: block;
+    border-radius: 0;
+}
+
+.video-poster-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.25) 100%);
+    pointer-events: none;
+}
+
+.video-poster-play {
+    position: relative;
+    z-index: 2;
+    width: 88px;
+    height: 88px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: var(--transition);
+}
+
+.video-poster-play svg {
+    width: 36px;
+    height: 36px;
+    margin-left: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .video-poster-play:hover {
+        transform: scale(1.06);
+        background: #ffffff;
+    }
+}
+
+.video-poster-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0 16px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Products: Pro Grow Tower — primary green on dark bg-alt fails contrast in dark mode */
+#featured-product .featured-price-current {
+    color: var(--primary);
+}
+
+[data-theme="dark"] #featured-product .featured-price-current {
+    color: var(--secondary);
+}
+
+#featured-product .featured-price-was {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+[data-theme="dark"] #featured-product .featured-price-was {
+    color: #a1a1aa;
+}
+
+/* About: Our Journey — grid timeline so year badges never overlap headings */
+#our-journey-timeline .journey-track {
+    max-width: 760px;
+    margin: 2.5rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#our-journey-timeline .journey-row {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 6.5rem) minmax(0, 1fr);
+    gap: 1rem 1.5rem;
+    align-items: start;
+}
+
+#our-journey-timeline .journey-row__meta {
+    border-inline-end: 3px solid var(--secondary);
+    padding-inline-end: 1.25rem;
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+#our-journey-timeline .journey-year-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    background: var(--secondary);
+    white-space: nowrap;
+}
+
+#our-journey-timeline .journey-year-badge--today {
+    background: var(--primary);
+}
+
+#our-journey-timeline .journey-row__body h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.35rem;
+}
+
+#our-journey-timeline .journey-row__body p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+@media (max-width: 520px) {
+    #our-journey-timeline .journey-row {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+    }
+
+    #our-journey-timeline .journey-row__meta {
+        border-inline-end: none;
+        border-block-end: 3px solid var(--secondary);
+        padding-inline-end: 0;
+        padding-block-end: 0.65rem;
+        text-align: start;
+        justify-content: flex-start;
+    }
+}
+
 .icon-btn {
     background: transparent;
     border: none;
@@ -299,18 +518,6 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
 .icon-btn:active {
     background-color: var(--border);
     transform: scale(0.96);
-}
-
-.nav-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1090;
-    display: none;
-}
-
-.nav-backdrop.is-visible {
-    display: block;
 }
 
 /* Hero Section */
@@ -364,6 +571,10 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
     animation: fadeInUp 1.4s ease;
 }
 
+.split-hero .hero-btns {
+    margin-top: 2rem;
+}
+
 /* Cards */
 .card-grid {
     display: grid;
@@ -383,6 +594,21 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
     display: flex;
     flex-direction: column;
 }
+
+.product-card-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.product-card-actions .btn {
+    flex: 1;
+    min-width: auto;
+}
+
+
 
 .card:active {
     transform: scale(0.99);
@@ -412,9 +638,35 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
 
 .card img {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 0;
+    transition: transform 0.5s ease;
+}
+
+#our-team .card img {
+    aspect-ratio: 4 / 5;
+    object-position: center top;
+}
+
+
+@media (min-width: 1025px) {
+    .card img {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .card:hover img {
+        transform: scale(1.05);
+    }
+}
+
+
+
+#our-team .card > img {
+    height: 300px;
+    object-position: center 20%;
 }
 
 .card-content {
@@ -456,7 +708,38 @@ footer {
 
 .footer-column h4 {
     margin-bottom: 1.5rem;
-    color: var(--secondary);
+    color: #bbf7d0;
+    font-weight: 700;
+}
+
+/* Footer is always on a dark strip; override header .logo colors for contrast */
+footer .logo {
+    color: #f8fafc;
+}
+
+footer .logo .lucide,
+footer .logo svg {
+    color: inherit;
+    stroke: currentColor;
+}
+
+[data-theme="dark"] footer .logo {
+    color: #ecfdf5;
+}
+
+footer .footer-column ul a {
+    color: #f1f5f9;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    footer .footer-column ul a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+}
+
+footer .footer-column p {
+    color: rgba(248, 250, 252, 0.95);
 }
 
 .footer-socials {
@@ -543,6 +826,50 @@ footer {
     background: var(--secondary);
     color: var(--bg-dark);
 }
+
+/* Responsiveness Refinements */
+@media (max-width: 1024px) {
+    .card-grid--three {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-grid--three {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card-actions {
+        flex-direction: column;
+    }
+    
+    .product-card-actions .btn {
+        width: 100%;
+    }
+
+    /* Stack 2-column grids on mobile */
+    .card-grid[style*="grid-template-columns: 1fr 1fr"],
+    .card-grid[style*="grid-template-columns: repeat(2"] {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 40px !important;
+    }
+
+    .card-grid img {
+        height: auto !important;
+        max-height: 400px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
 
 /* Dashboard (no site header/footer) */
 .dashboard-body {
@@ -937,18 +1264,13 @@ footer {
         margin: 0 auto;
     }
 
+    .product-card-actions {
+        gap: 6px !important;
+    }
+
     /* Layouts */
     .card-grid {
         grid-template-columns: 1fr;
-    }
-
-    .split-hero {
-        grid-template-columns: 1fr;
-        padding-top: 40px;
-    }
-
-    .split-hero .hero-image {
-        order: -1;
     }
 
     .stats-grid {
@@ -956,9 +1278,16 @@ footer {
     }
 
     .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
+}
+
+@media (max-width: 640px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
     .mock-charts {
         grid-template-columns: 1fr;
@@ -966,7 +1295,7 @@ footer {
 }
 
 /* Header / Nav: Mobile & Tablet Only */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     /* Header: show logo (left) + hamburger (right) only */
     header {
         padding: 1rem 24px;
@@ -1060,10 +1389,7 @@ footer {
         width: 100%;
     }
 
-    /* Hide Dashboard from mobile menu (requested menu items only) */
-    nav ul li a[href="dashboard.html"] {
-        display: none;
-    }
+    /* Dashboard link now visible in mobile menu */
 
     nav ul li a {
         font-size: 1.1rem;

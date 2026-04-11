@@ -75,14 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const items = navActions.querySelectorAll('a.icon-btn, button.icon-btn');
             items.forEach((item) => {
                 if (item.classList.contains('menu-toggle') || item.id === 'menu-toggle') return;
-                // Only keep Cart / Profile / Search actions inside the drawer
-                const id = item.getAttribute('id') || '';
-                if (id === 'theme-toggle' || id === 'rtl-toggle') return;
-                const title = (item.getAttribute('title') || '').toLowerCase();
-                if (title && !['cart', 'profile', 'search'].includes(title)) return;
-
+                // Include all action buttons in mobile menu: Cart / Profile / Theme / RTL
                 const clone = item.cloneNode(true);
-
                 clone.removeAttribute('id'); // Prevent duplicate IDs
                 container.appendChild(clone);
             });
@@ -92,22 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navMenu.appendChild(mobileActions);
 
-        const backdrop = document.createElement('div');
-        backdrop.className = 'nav-backdrop';
-        backdrop.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(backdrop);
+        // Add event listeners for cloned buttons
+        container.querySelectorAll('.icon-btn').forEach((clonedBtn) => {
+            const title = clonedBtn.getAttribute('title') || '';
+            if (title.toLowerCase().includes('theme')) {
+                clonedBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleTheme();
+                });
+            } else if (title.toLowerCase().includes('rtl') || title.toLowerCase().includes('globe')) {
+                clonedBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleRTL();
+                });
+            }
+        });
 
         const openMenu = () => {
             navMenu.classList.add('active');
             document.body.classList.add('nav-active');
-            backdrop.classList.add('is-visible');
             setMenuOpenVisual(true);
         };
 
         const closeMenu = () => {
             navMenu.classList.remove('active');
             document.body.classList.remove('nav-active');
-            backdrop.classList.remove('is-visible');
             setMenuOpenVisual(false);
         };
 
@@ -118,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         menuToggle.addEventListener('click', toggleMenu);
-        backdrop.addEventListener('click', closeMenu);
 
         navMenu.querySelectorAll('ul li a').forEach((link) => {
             link.addEventListener('click', function (e) {
+                console.log('Mobile menu link clicked:', this.getAttribute('href'));
                 const href = this.getAttribute('href');
                 if (!href || href === '#') {
                     closeMenu();
@@ -140,7 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // behavior fails on mobile when the DOM changes (drawer closing) mid-tap.
                 e.preventDefault();
                 closeMenu();
-                window.location.href = href;
+                // Small delay to ensure menu closes before navigation
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 100);
             });
         });
     }
