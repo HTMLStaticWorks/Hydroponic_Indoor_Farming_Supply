@@ -305,7 +305,7 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1050;
+    z-index: 1090;
     display: none;
 }
 
@@ -869,12 +869,11 @@ footer {
     }
 }
 
-#menu-toggle, 
+#menu-toggle,
 .menu-toggle {
     display: none;
     /* Large tap target for mobile */
-    padding: 12px;
-    margin: -12px;
+    padding: 10px 12px;
     cursor: pointer;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
@@ -882,6 +881,14 @@ footer {
     line-height: 1;
     user-select: none;
     -webkit-user-select: none;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+}
+
+[data-theme="dark"] #menu-toggle,
+[data-theme="dark"] .menu-toggle {
+    color: var(--secondary);
 }
 
 .mobile-nav-actions {
@@ -966,16 +973,15 @@ footer {
         overflow: visible;
     }
 
-    header > .nav-actions > .icon-btn,
-    header > .nav-actions > a:not(.logo),
-    header > .nav-actions > button {
+    /* Hide all nav-action items EXCEPT the hamburger button */
+    header > .nav-actions > .icon-btn:not(#menu-toggle),
+    header > .nav-actions > a.icon-btn,
+    header > .nav-actions > button.icon-btn {
         display: none !important;
     }
 
-    header > .nav-actions > .menu-toggle {
-        display: flex !important;
-    }
-
+    /* Always show the hamburger toggle */
+    #menu-toggle,
     .menu-toggle {
         display: flex !important;
         align-items: center;
@@ -984,10 +990,14 @@ footer {
         height: 44px;
         font-size: 1.5rem;
         color: var(--primary);
-        z-index: 1200;
+        background: transparent;
+        border: none;
         cursor: pointer;
+        z-index: 1200;
+        position: relative;
     }
 
+    [data-theme="dark"] #menu-toggle,
     [data-theme="dark"] .menu-toggle {
         color: var(--secondary);
     }
@@ -1072,17 +1082,6 @@ footer {
 
     [data-theme="dark"] nav ul li a {
         background: rgba(255, 255, 255, 0.06);
-    }
-
-    nav ul li a > i {
-        width: 20px;
-        text-align: center;
-        color: var(--secondary);
-        flex: 0 0 20px;
-    }
-
-    [data-theme="dark"] nav ul li a > i {
-        color: var(--secondary);
     }
 
     nav ul li a:active,

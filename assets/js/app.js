@@ -48,48 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setMenuOpenVisual(open) {
         if (menuToggle) {
+            menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            // The icon is either the button itself (old <i>) or a child <i>
+            const icon = menuToggle.querySelector('i') || menuToggle;
             if (open) {
-                menuToggle.classList.replace('fa-bars', 'fa-times');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
             } else {
-                menuToggle.classList.replace('fa-times', 'fa-bars');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         }
         runLucide();
     }
 
     if (menuToggle && navMenu) {
-        const navIconMap = {
-            'index.html': 'fa-home',
-            'index2.html': 'fa-house-chimney',
-            'products.html': 'fa-seedling',
-            'about.html': 'fa-building',
-            'solutions.html': 'fa-lightbulb',
-            'applications.html': 'fa-th-large',
-            'contact.html': 'fa-envelope'
-        };
 
-        // Mobile/Tablet: ensure only the requested primary links appear in the drawer
-        try {
-            if (window.matchMedia && window.matchMedia('(max-width: 992px)').matches) {
-                navMenu.querySelectorAll('a[href="dashboard.html"]').forEach((a) => {
-                    const li = a.closest('li');
-                    if (li) li.remove();
-                });
-            }
-        } catch (_) {
-            // no-op
-        }
-
-        navMenu.querySelectorAll('ul li a').forEach((link) => {
-            if (link.querySelector('i')) return;
-            const href = link.getAttribute('href') || '';
-            const iconClass = navIconMap[href];
-            if (!iconClass) return;
-            const icon = document.createElement('i');
-            icon.className = `fas ${iconClass}`;
-            icon.setAttribute('aria-hidden', 'true');
-            link.prepend(icon);
-        });
 
         const mobileActions = document.createElement('div');
         mobileActions.className = 'mobile-nav-actions';
@@ -162,9 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     return;
                 }
-                // For normal page navigations, allow the browser to handle navigation.
-                // Only close the drawer immediately to avoid blocking the click.
+                // Prevent default and explicitly navigate — relying on passive default
+                // behavior fails on mobile when the DOM changes (drawer closing) mid-tap.
+                e.preventDefault();
                 closeMenu();
+                window.location.href = href;
             });
         });
     }
