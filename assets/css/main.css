@@ -333,6 +333,24 @@ html[data-theme="dark"] .theme-toggle-btn .theme-icon-sun {
     border-radius: 0;
 }
 
+/* How It Works — responsive image fix for mobile & tablet */
+@media (max-width: 1024px) {
+    #how-it-works .how-it-works-step-image {
+        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--radius) var(--radius) 0 0;
+        margin-bottom: 1.25rem;
+    }
+
+    #how-it-works .how-it-works-step-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: unset;
+    }
+}
+
 /* Video placeholder: photo poster + high-contrast play control */
 .video-poster-tile {
     position: relative;
@@ -710,6 +728,38 @@ footer {
     text-align: center;
 }
 
+/* Light theme footer overrides */
+[data-theme="light"] footer {
+    background-color: #F1F5F1;
+    color: var(--text-light);
+}
+
+[data-theme="light"] footer .footer-column h4 {
+    color: var(--primary);
+}
+
+[data-theme="light"] footer .footer-column .logo {
+    color: var(--primary);
+}
+
+[data-theme="light"] footer .footer-column ul a {
+    color: var(--text-muted-light);
+}
+
+[data-theme="light"] footer .footer-column p {
+    color: var(--text-muted-light);
+}
+
+[data-theme="light"] .footer-social-link {
+    border-color: rgba(20, 83, 45, 0.3);
+    color: var(--primary);
+}
+
+[data-theme="light"] .footer-bottom {
+    border-top-color: var(--border-light);
+    color: var(--text-muted-light);
+}
+
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -723,9 +773,9 @@ footer {
     font-weight: 700;
 }
 
-/* Footer is always on a dark strip; override header .logo colors for contrast */
+/* Footer logo matches header logo colors */
 footer .footer-column .logo {
-    color: #f8fafc;
+    color: var(--primary);
 }
 
 footer .footer-column .logo .lucide,
@@ -735,8 +785,7 @@ footer .footer-column .logo svg {
 }
 
 [data-theme="dark"] footer .footer-column .logo {
-    color: #ffffff;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.18);
+    color: var(--secondary);
 }
 
 footer .footer-column {
@@ -925,9 +974,9 @@ footer .footer-column p {
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 10px;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     color: var(--primary);
 }
 

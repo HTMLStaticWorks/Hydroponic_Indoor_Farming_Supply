@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <title>User Dashboard - HydroGrow</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>
         (function () {
             var t = localStorage.getItem('theme') || 'light';
@@ -20,10 +21,10 @@
 <body class="dashboard-body">
 
     <aside class="dashboard-sidebar" aria-label="Main navigation">
-        <div class="dashboard-sidebar-header">
+        <a href="index.html" class="dashboard-sidebar-header" style="text-decoration: none;" title="Go to Home">
             <i class="fas fa-leaf" aria-hidden="true"></i>
             <span>HydroGrow</span>
-        </div>
+        </a>
         <nav class="dashboard-nav" aria-label="Dashboard sections">
             <a href="#overview" aria-current="page"><i class="fas fa-th-large" aria-hidden="true"></i> Overview</a>
             <a href="#grow-zones"><i class="fas fa-seedling" aria-hidden="true"></i> Grow zones</a>
@@ -59,7 +60,7 @@
                 </button>
                 <button type="button" class="icon-btn" id="rtl-toggle" title="Toggle text direction"
                     aria-label="Toggle RTL">
-                    <i class="fas fa-globe"></i>
+                    <i class="fas fa-right-left"></i>
                 </button>
 
             </div>
@@ -191,12 +192,147 @@
             </section>
 
             <section id="settings" class="dashboard-panel">
-                <h2>Profile &amp; settings</h2>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">Account details, units, notification channels,
-                    and API keys for integrations.</p>
-                <p style="font-size: 0.95rem; margin-bottom: 1rem;">Signed in as <strong>jordan@example.com</strong> ·
-                    Metric units · Email alerts on</p>
-                <a href="login.html" class="btn btn-secondary">Sign out on this device</a>
+                <h2>Profile &amp; Settings</h2>
+
+                <!-- Profile Card -->
+                <div style="
+                    background: var(--bg-alt);
+                    border: 1px solid var(--border);
+                    border-radius: 16px;
+                    padding: 2rem;
+                    margin-bottom: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1.5rem;
+                    flex-wrap: wrap;
+                ">
+                    <!-- Avatar -->
+                    <div style="
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, var(--primary), var(--secondary));
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-shrink: 0;
+                        font-size: 2rem;
+                        color: #fff;
+                        box-shadow: 0 4px 16px rgba(34,197,94,0.3);
+                    ">
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <!-- User Info -->
+                    <div style="flex: 1; min-width: 160px;">
+                        <div style="font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; color: var(--text);">Jordan Smith</div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">jordan@example.com</div>
+                        <span style="
+                            display: inline-block;
+                            background: var(--secondary);
+                            color: #fff;
+                            font-size: 0.75rem;
+                            font-weight: 700;
+                            padding: 3px 12px;
+                            border-radius: 999px;
+                            letter-spacing: 0.04em;
+                        ">Pro Grower</span>
+                    </div>
+                </div>
+
+                <!-- Account Stats -->
+                <div style="
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 1rem;
+                    margin-bottom: 1.5rem;
+                ">
+                    <div style="
+                        background: var(--bg-alt);
+                        border: 1px solid var(--border);
+                        border-radius: 12px;
+                        padding: 1rem;
+                        text-align: center;
+                    ">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: var(--secondary);">4</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Active Zones</div>
+                    </div>
+                    <div style="
+                        background: var(--bg-alt);
+                        border: 1px solid var(--border);
+                        border-radius: 12px;
+                        padding: 1rem;
+                        text-align: center;
+                    ">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: var(--secondary);">12</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Orders</div>
+                    </div>
+                    <div style="
+                        background: var(--bg-alt);
+                        border: 1px solid var(--border);
+                        border-radius: 12px;
+                        padding: 1rem;
+                        text-align: center;
+                    ">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: var(--secondary);">98%</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Uptime</div>
+                    </div>
+                </div>
+
+                <!-- Settings List -->
+                <div style="
+                    background: var(--bg-alt);
+                    border: 1px solid var(--border);
+                    border-radius: 16px;
+                    overflow: hidden;
+                    margin-bottom: 1.5rem;
+                ">
+                    <div style="display:flex; align-items:center; gap:14px; padding:1rem 1.25rem; border-bottom:1px solid var(--border);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                            <i class="fas fa-sliders-h" style="font-size:0.85rem;"></i>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-weight:600;font-size:0.95rem;">Units &amp; Preferences</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">Metric · Celsius · 24h clock</div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.8rem;"></i>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:14px; padding:1rem 1.25rem; border-bottom:1px solid var(--border);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                            <i class="fas fa-bell" style="font-size:0.85rem;"></i>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-weight:600;font-size:0.95rem;">Notification Channels</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">Email alerts on · Push off</div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.8rem;"></i>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:14px; padding:1rem 1.25rem; border-bottom:1px solid var(--border);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                            <i class="fas fa-key" style="font-size:0.85rem;"></i>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-weight:600;font-size:0.95rem;">API Keys</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">2 active integrations</div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.8rem;"></i>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:14px; padding:1rem 1.25rem;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                            <i class="fas fa-lock" style="font-size:0.85rem;"></i>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-weight:600;font-size:0.95rem;">Security</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">Password · 2FA enabled</div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.8rem;"></i>
+                    </div>
+                </div>
+
+                <!-- Sign Out -->
+                <a href="login.html" class="btn btn-secondary" style="width:100%; justify-content:center;">
+                    <i class="fas fa-sign-out-alt" style="margin-right:8px;"></i> Sign out on this device
+                </a>
             </section>
         </div>
 
@@ -236,9 +372,25 @@
                 });
             }
 
+            // Set Overview as active by default on page load
+            setCurrent('#overview');
+
+            // Flag to silence the IntersectionObserver while a click-scroll is in progress
+            var scrollLock = false;
+            var scrollLockTimer = null;
+
             links.forEach(function (a) {
                 a.addEventListener('click', function () {
+                    // Immediately highlight the clicked link
                     setCurrent(a.getAttribute('href'));
+
+                    // Lock the observer so it doesn't override during scroll animation
+                    scrollLock = true;
+                    clearTimeout(scrollLockTimer);
+                    scrollLockTimer = setTimeout(function () {
+                        scrollLock = false;
+                    }, 800);
+
                     if (window.innerWidth <= 900) {
                         toggleMenu();
                     }
@@ -246,10 +398,12 @@
             });
 
             var obs = new IntersectionObserver(function (entries) {
+                // Skip observer updates while a nav click is scrolling
+                if (scrollLock) return;
                 entries.forEach(function (en) {
                     if (en.isIntersecting) setCurrent('#' + en.target.id);
                 });
-            }, { root: document.querySelector('.dashboard-content'), threshold: 0.35 });
+            }, { root: document.querySelector('.dashboard-content'), threshold: 0.5, rootMargin: '0px 0px -30% 0px' });
 
             sections.forEach(function (s) { obs.observe(s); });
         });

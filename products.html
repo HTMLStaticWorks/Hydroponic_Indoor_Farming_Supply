@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <title>Products - HydroGrow Supplies</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         /* PRODUCTS PAGE FIXES */
         @media (max-width: 768px) {
@@ -49,9 +50,34 @@
             
             /* Shop by Category - Tablet Fix */
             #product-categories .card-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: repeat(2, 1fr) !important;
                 gap: 25px !important;
             }
+        }
+
+        /* Shop by Category — landscape image fill */
+        #product-categories .category-card-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        #product-categories .card {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        #product-categories .card .card-content {
+            padding: 16px;
+            text-align: center;
+        }
+
+        #product-categories .card h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -85,7 +111,7 @@
                 <i class="fas fa-moon"></i>
             </button>
             <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">
-                <i class="fas fa-globe"></i>
+                <i class="fas fa-right-left"></i>
             </button>
             <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" type="button">
                 <i class="fas fa-bars" aria-hidden="true"></i>
@@ -206,38 +232,34 @@
                 <h2 class="section-title text-center">Shop by Category</h2>
                 <div class="card-grid" style="grid-template-columns: repeat(4, minmax(150px, 1fr));">
                     <div class="card">
+                        <img class="category-card-img"
+                            src="image/WhatsApp%20Image%202026-04-10%20at%204.09.07%20PM%20(1).jpeg"
+                            alt="Hydroponic growing systems" loading="lazy">
                         <div class="card-content">
-                            <div class="how-it-works-step-image">
-                                <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.07%20PM%20(1).jpeg"
-                                    alt="Hydroponic growing systems" width="140" height="140" loading="lazy">
-                            </div>
                             <h4>Systems</h4>
                         </div>
                     </div>
                     <div class="card">
+                        <img class="category-card-img"
+                            src="image/WhatsApp%20Image%202026-04-10%20at%204.09.06%20PM%20(2).jpeg"
+                            alt="LED grow lighting" loading="lazy">
                         <div class="card-content">
-                            <div class="how-it-works-step-image">
-                                <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.06%20PM%20(2).jpeg"
-                                    alt="LED grow lighting" width="140" height="140" loading="lazy">
-                            </div>
                             <h4>Lighting</h4>
                         </div>
                     </div>
                     <div class="card">
+                        <img class="category-card-img"
+                            src="image/WhatsApp%20Image%202026-04-10%20at%204.09.11%20PM%20(3).jpeg"
+                            alt="Hydroponic nutrients" loading="lazy">
                         <div class="card-content">
-                            <div class="how-it-works-step-image">
-                                <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.11%20PM%20(3).jpeg"
-                                    alt="Hydroponic nutrients" width="140" height="140" loading="lazy">
-                            </div>
                             <h4>Nutrients</h4>
                         </div>
                     </div>
                     <div class="card">
+                        <img class="category-card-img"
+                            src="image/WhatsApp%20Image%202026-04-10%20at%204.09.13%20PM%20(1).jpeg"
+                            alt="Pumps and growing accessories" loading="lazy">
                         <div class="card-content">
-                            <div class="how-it-works-step-image">
-                                <img src="image/WhatsApp%20Image%202026-04-10%20at%204.09.13%20PM%20(1).jpeg"
-                                    alt="Pumps and growing accessories" width="140" height="140" loading="lazy">
-                            </div>
                             <h4>Tools</h4>
                         </div>
                     </div>
@@ -317,9 +339,9 @@
                     </div>
                     <p>Sustainable indoor farming solutions for a greener future.</p>
                     <div class="footer-socials">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="X" aria-label="X"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">

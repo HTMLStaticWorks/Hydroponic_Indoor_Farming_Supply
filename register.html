@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <title>Register - Join HydroGrow</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>
         (function () {
             var t = localStorage.getItem('theme') || 'light';
@@ -32,23 +33,22 @@
         }
 
         .auth-toolbar {
-            position: absolute;
-            top: 0;
-            right: 0;
+            position: fixed;
+            top: 16px;
+            right: 16px;
             display: flex;
             gap: 8px;
-            z-index: 2;
+            z-index: 999;
         }
 
         [dir="rtl"] .auth-toolbar {
             right: auto;
-            left: 0;
+            left: 16px;
         }
 
         .auth-card {
             background: var(--card);
             padding: 40px 32px 36px;
-            padding-top: 52px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             width: 100%;
@@ -210,7 +210,7 @@
             </button>
             <button type="button" class="icon-btn" id="rtl-toggle" title="Toggle text direction"
                 aria-label="Toggle RTL">
-                <i class="fas fa-globe"></i>
+                <i class="fas fa-right-left"></i>
             </button>
         </div>
 
@@ -273,25 +273,15 @@
 
             <div class="social-login">
                 <button type="button" class="social-btn" title="Sign in with Google">
-                    <span
-                        style="font-weight:800;font-size:0.95rem;width:22px;display:inline-flex;justify-content:center;font-family:Inter,sans-serif"
-                        aria-hidden="true">G</span>
+                    <i class="fab fa-google" style="font-size:1.1rem; color:#4285F4;"></i>
                     <span>Sign in with Google</span>
                 </button>
                 <button type="button" class="social-btn" title="Sign in with Apple">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                        <path
-                            d="M12 3c.9 0 1.7.4 2.2 1 .5-.6 1.3-1 2.1-1 .3 0 .6 0 .9.1-.6.9-1 2-1 3.1 0 1.1.4 2.1 1 2.9-.5.1-1 .2-1.5.2-1 0-1.9-.4-2.7-1-.8.6-1.7 1-2.7 1-.5 0-1-.1-1.4-.3.7-.8 1.1-1.9 1.1-3 0-1.2-.4-2.3-1.1-3.1.3-.1.6-.1.9-.1z" />
-                        <path
-                            d="M9 10c-2.2 1.5-3.5 4-3 6.8.4 2.2 2.2 3.7 4.5 3.7h3c2.3 0 4.1-1.5 4.5-3.7.5-2.8-.8-5.3-3-6.8" />
-                    </svg>
+                    <i class="fab fa-apple" style="font-size:1.2rem;"></i>
                     <span>Sign in with Apple</span>
                 </button>
                 <button type="button" class="social-btn" title="Sign in with GitHub">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                    </svg>
+                    <i class="fab fa-github" style="font-size:1.1rem;"></i>
                     <span>Sign in with GitHub</span>
                 </button>
             </div>
