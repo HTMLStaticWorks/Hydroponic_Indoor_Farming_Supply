@@ -235,6 +235,17 @@ nav ul li a {
     -webkit-tap-highlight-color: transparent;
 }
 
+nav ul li a[aria-current="page"],
+nav ul li a.active-link {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+[data-theme="dark"] nav ul li a[aria-current="page"],
+[data-theme="dark"] nav ul li a.active-link {
+    color: var(--secondary);
+}
+
 @media (hover: hover) and (pointer: fine) {
     nav ul li a:hover {
         color: var(--secondary);
@@ -713,18 +724,34 @@ footer {
 }
 
 /* Footer is always on a dark strip; override header .logo colors for contrast */
-footer .logo {
+footer .footer-column .logo {
     color: #f8fafc;
 }
 
-footer .logo .lucide,
-footer .logo svg {
+footer .footer-column .logo .lucide,
+footer .footer-column .logo svg {
     color: inherit;
     stroke: currentColor;
 }
 
-[data-theme="dark"] footer .logo {
-    color: #ecfdf5;
+[data-theme="dark"] footer .footer-column .logo {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.18);
+}
+
+footer .footer-column {
+    text-align: left;
+}
+
+footer .footer-column ul,
+footer .footer-column p {
+    margin: 0;
+    padding: 0;
+}
+
+footer .footer-column ul li + li,
+footer .footer-column p + p {
+    margin-top: 0.35rem;
 }
 
 footer .footer-column ul a {
@@ -744,7 +771,7 @@ footer .footer-column p {
 
 .footer-socials {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     margin-top: 20px;
 }
@@ -1228,6 +1255,20 @@ footer .footer-column p {
         max-width: 100vw;
     }
 
+    /* Keep site header pinned on mobile/tablet scroll */
+    body:not(.dashboard-body) {
+        padding-top: 76px;
+    }
+
+    body:not(.dashboard-body) > header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 900;
+    }
+
     body.nav-active {
         overflow: hidden;
     }
@@ -1281,6 +1322,10 @@ footer .footer-column p {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
+
+    .mock-charts {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1289,17 +1334,17 @@ footer .footer-column p {
     }
 }
 
-    .mock-charts {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Header / Nav: Mobile & Tablet Only */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
     /* Header: show logo (left) + hamburger (right) only */
     header {
         padding: 1rem 24px;
         overflow: visible;
+    }
+
+    header > .nav-actions {
+        margin-inline-start: auto;
+        justify-content: flex-end;
     }
 
     /* Hide all nav-action items EXCEPT the hamburger button */
@@ -1324,6 +1369,11 @@ footer .footer-column p {
         cursor: pointer;
         z-index: 1200;
         position: relative;
+    }
+
+    header > .nav-actions > .menu-toggle,
+    header > .nav-actions > #menu-toggle {
+        display: flex !important;
     }
 
     [data-theme="dark"] #menu-toggle,
@@ -1364,6 +1414,23 @@ footer .footer-column p {
     [dir="rtl"] nav.active {
         left: 0;
         right: auto;
+    }
+
+    /* Keep dashboard sidebar navigation inside the sidebar on tablet/mobile */
+    .dashboard-sidebar .dashboard-nav {
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0.75rem 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        transition: none !important;
+        z-index: auto !important;
     }
 
     /* Scroll fix + spacing so nothing is cut off */
@@ -1423,59 +1490,52 @@ footer .footer-column p {
 
     /* Mobile Nav Actions (cloned icons: cart/profile/theme/rtl, + search if present) */
     .mobile-nav-actions {
-        margin-top: 10px;
-        padding-top: 22px;
-        padding-bottom: 60px;
+        margin-top: 8px;
+        padding-top: 12px;
+        padding-bottom: 20px;
         border-top: 1px solid var(--border);
         width: 100%;
         display: block !important;
     }
 
     .mobile-nav-actions-container {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
         width: 100% !important;
     }
 
     .mobile-nav-actions-container .icon-btn,
     .mobile-nav-actions-container a,
     .mobile-nav-actions-container button {
-        display: flex !important;
-        flex-direction: column !important;
+        display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background: var(--bg-alt) !important;
-        padding: 18px 10px !important;
-        border-radius: 16px !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
         border: 1px solid var(--border) !important;
         color: var(--text) !important;
-        font-size: 1.5rem !important;
-        height: auto !important;
-        width: 100% !important;
+        font-size: 1.2rem !important;
+        height: 44px !important;
+        width: 44px !important;
         text-decoration: none !important;
-        gap: 8px !important;
-        box-shadow: var(--shadow);
     }
 
     .mobile-nav-actions-container .icon-btn::after {
-        content: attr(title);
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        opacity: 0.8;
+        content: none !important;
     }
 
     .mobile-nav-actions-container .icon-btn:active {
         transform: scale(0.95);
-        background: var(--primary) !important;
-        color: white !important;
+        background: var(--border) !important;
+        color: var(--text) !important;
     }
 
     [data-theme="dark"] .mobile-nav-actions-container .icon-btn:active {
-        background: var(--secondary) !important;
-        color: var(--bg-dark) !important;
+        background: var(--border) !important;
+        color: var(--text) !important;
     }
 }
 
