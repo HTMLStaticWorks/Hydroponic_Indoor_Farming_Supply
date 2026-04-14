@@ -21,7 +21,7 @@
 <body class="dashboard-body">
 
     <aside class="dashboard-sidebar" aria-label="Main navigation">
-        <a href="index.html" class="logo dashboard-sidebar-header" title="Go to Home">
+        <a href="index.html" class="dashboard-sidebar-header" style="text-decoration: none;" title="Go to Home">
             <i class="fas fa-leaf" aria-hidden="true"></i>
             <span>HydroGrow</span>
         </a>
@@ -61,13 +61,13 @@
                     aria-label="Toggle RTL">
                     <i class="fas fa-right-left"></i>
                 </button>
-                <a href="#settings" class="compact-profile" title="Profile">
-                    <div class="compact-profile-avatar">
+                <a href="#settings" class="topbar-user-pill" title="Profile & Settings">
+                    <div class="topbar-user-avatar">
                         <i class="fas fa-user"></i>
                     </div>
-                    <div class="compact-profile-info">
-                        <span class="compact-profile-name">Jordan Smith</span>
-                        <span class="compact-profile-role">Pro Grower</span>
+                    <div class="topbar-user-info">
+                        <span class="topbar-user-name">Jordan Smith</span>
+                        <span class="topbar-user-role">Pro Grower</span>
                     </div>
                 </a>
 
@@ -202,7 +202,17 @@
             <section id="settings" class="dashboard-panel">
                 <h2>Profile &amp; Settings</h2>
 
-                <!-- Profile Card Removed and moved to Topbar -->
+                <!-- Compact Profile Card -->
+                <div class="profile-card-compact">
+                    <div class="profile-card-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-card-details">
+                        <h3>Jordan Smith</h3>
+                        <p>jordan@example.com</p>
+                        <span class="badge-pro">Pro Grower</span>
+                    </div>
+                </div>
 
                 <!-- Account Stats -->
                 <div style="
