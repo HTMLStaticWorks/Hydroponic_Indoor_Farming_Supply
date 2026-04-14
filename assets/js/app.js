@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const html = document.documentElement;
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.querySelector('nav#main-nav');
-    const navActions = document.querySelector('.nav-actions');
 
     function runLucide() {
         if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -38,13 +37,83 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('dir', newDir);
     };
 
+    const ensureMobileNavActions = () => {
+        if (!navMenu) return;
+        if (navMenu.querySelector('.mobile-nav-actions')) return;
+
+        const desktopActions = document.querySelector('header .nav-actions');
+        if (!desktopActions) return;
+
+        const mobileActions = document.createElement('div');
+        mobileActions.className = 'mobile-nav-actions';
+
+        const container = document.createElement('div');
+        container.className = 'mobile-nav-actions-container';
+
+        desktopActions.querySelectorAll('a.icon-btn, button.icon-btn').forEach((source) => {
+            if (source.id === 'menu-toggle') return;
+
+            const tagName = source.tagName.toLowerCase();
+            const item = document.createElement(tagName === 'a' ? 'a' : 'button');
+            item.className = source.className;
+            item.innerHTML = source.innerHTML;
+
+            const title = source.getAttribute('title') || '';
+            if (title) item.setAttribute('title', title);
+            item.setAttribute('aria-label', source.getAttribute('aria-label') || title);
+
+            if (tagName === 'a') {
+                item.setAttribute('href', source.getAttribute('href') || '#');
+            } else {
+                item.setAttribute('type', 'button');
+                if (source.id === 'theme-toggle') item.classList.add('theme-toggle-btn');
+                if (source.id === 'rtl-toggle') item.classList.add('rtl-toggle-btn');
+            }
+
+            container.appendChild(item);
+        });
+
+        if (!container.children.length) return;
+        mobileActions.appendChild(container);
+        navMenu.appendChild(mobileActions);
+    };
+
     document.querySelectorAll('.rtl-toggle-btn, #rtl-toggle').forEach((btn) => {
         btn.addEventListener('click', toggleRTL);
     });
 
     initRTL();
+    ensureMobileNavActions();
+
+    navMenu?.querySelectorAll('.theme-toggle-btn').forEach((btn) => {
+        btn.addEventListener('click', toggleTheme);
+    });
+
+    navMenu?.querySelectorAll('.rtl-toggle-btn').forEach((btn) => {
+        btn.addEventListener('click', toggleRTL);
+    });
 
     runLucide();
+
+    const getNavPathKey = (value) => {
+        if (!value) return 'index.html';
+        const pathOnly = value.split('#')[0].split('?')[0];
+        const normalized = pathOnly.replace(/\\/g, '/');
+        const fileName = normalized.split('/').pop();
+        return (fileName || 'index.html').toLowerCase();
+    };
+
+    const currentPathKey = getNavPathKey(window.location.pathname);
+    if (navMenu) {
+        navMenu.querySelectorAll('ul li a[href]').forEach((link) => {
+            const href = link.getAttribute('href');
+            if (!href || href === '#' || href.startsWith('#') || /^(mailto:|tel:|javascript:)/i.test(href)) return;
+            const isCurrent = getNavPathKey(href) === currentPathKey;
+            link.classList.toggle('active-link', isCurrent);
+            if (isCurrent) link.setAttribute('aria-current', 'page');
+            else link.removeAttribute('aria-current');
+        });
+    }
 
     function setMenuOpenVisual(open) {
         if (menuToggle) {
@@ -63,45 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (menuToggle && navMenu) {
-
-
-        const mobileActions = document.createElement('div');
-        mobileActions.className = 'mobile-nav-actions';
-
-        const container = document.createElement('div');
-        container.className = 'mobile-nav-actions-container';
-
-        if (navActions) {
-            const items = navActions.querySelectorAll('a.icon-btn, button.icon-btn');
-            items.forEach((item) => {
-                if (item.classList.contains('menu-toggle') || item.id === 'menu-toggle') return;
-                // Include all action buttons in mobile menu: Cart / Profile / Theme / RTL
-                const clone = item.cloneNode(true);
-                clone.removeAttribute('id'); // Prevent duplicate IDs
-                container.appendChild(clone);
-            });
-        }
-
-        mobileActions.appendChild(container);
-
-        navMenu.appendChild(mobileActions);
-
-        // Add event listeners for cloned buttons
-        container.querySelectorAll('.icon-btn').forEach((clonedBtn) => {
-            const title = clonedBtn.getAttribute('title') || '';
-            if (title.toLowerCase().includes('theme')) {
-                clonedBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toggleTheme();
-                });
-            } else if (title.toLowerCase().includes('rtl') || title.toLowerCase().includes('globe')) {
-                clonedBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toggleRTL();
-                });
-            }
-        });
-
         const openMenu = () => {
             navMenu.classList.add('active');
             document.body.classList.add('nav-active');
