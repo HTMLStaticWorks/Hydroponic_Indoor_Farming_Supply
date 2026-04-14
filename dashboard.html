@@ -44,13 +44,12 @@
 
     <div class="dashboard-main">
         <header class="dashboard-topbar">
-            <div style="display: flex; align-items: center;">
-                <button type="button" class="menu-toggle" id="dashboard-menu-toggle" aria-label="Toggle menu">
+            <div style="display: flex; align-items: center; min-width: 0;">
+                <button type="button" class="menu-toggle" id="dashboard-menu-toggle" aria-label="Toggle menu" style="flex-shrink: 0;">
                     <i class="fas fa-bars"></i>
                 </button>
-                <div>
-                    <h1 style="margin: 0; font-size: 1.15rem; font-weight: 700;">User Dashboard</h1>
-
+                <div style="min-width: 0; overflow: hidden;">
+                    <h1 style="margin: 0; font-size: 1.1rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">User Dashboard</h1>
                 </div>
             </div>
             <div class="dashboard-topbar-actions">
@@ -62,6 +61,30 @@
                     aria-label="Toggle RTL">
                     <i class="fas fa-right-left"></i>
                 </button>
+                <a href="#settings" class="topbar-profile" title="Profile" style="
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, var(--primary), var(--secondary));
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+                    margin-inline-start: 6px;
+                    flex-shrink: 0;
+                ">
+                    <i class="fas fa-user" style="font-size: 1rem;"></i>
+                </a>
+                <style>
+                    .topbar-profile:hover {
+                        transform: scale(1.08);
+                        box-shadow: 0 6px 14px rgba(34, 197, 94, 0.4);
+                        opacity: 0.95;
+                    }
+                </style>
 
             </div>
         </header>
@@ -195,7 +218,7 @@
                 <h2>Profile &amp; Settings</h2>
 
                 <!-- Profile Card -->
-                <div style="
+                <div class="profile-header" style="
                     background: var(--bg-alt);
                     border: 1px solid var(--border);
                     border-radius: 16px;
@@ -427,6 +450,12 @@
 
             .dashboard-panel p {
                 text-align: center !important;
+            }
+            
+            .profile-header {
+                justify-content: center !important;
+                text-align: center !important;
+                flex-direction: column !important;
             }
 
             .dashboard-metrics {

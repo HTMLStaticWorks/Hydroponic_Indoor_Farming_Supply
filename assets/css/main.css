@@ -205,11 +205,7 @@ header {
     font-weight: 800;
     color: var(--primary);
     flex-shrink: 0;
-}
-
-a.logo {
     text-decoration: none;
-    color: inherit;
 }
 
 [data-theme="dark"] .logo {
@@ -1052,12 +1048,14 @@ footer .footer-column p {
     border-bottom: 1px solid var(--border);
     background: var(--card);
     flex-shrink: 0;
+    flex-wrap: nowrap;
 }
 
 .dashboard-topbar-actions {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 .dashboard-content {
