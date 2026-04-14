@@ -21,7 +21,7 @@
 <body class="dashboard-body">
 
     <aside class="dashboard-sidebar" aria-label="Main navigation">
-        <a href="index.html" class="dashboard-sidebar-header" style="text-decoration: none;" title="Go to Home">
+        <a href="index.html" class="logo dashboard-sidebar-header" title="Go to Home">
             <i class="fas fa-leaf" aria-hidden="true"></i>
             <span>HydroGrow</span>
         </a>
@@ -61,30 +61,15 @@
                     aria-label="Toggle RTL">
                     <i class="fas fa-right-left"></i>
                 </button>
-                <a href="#settings" class="topbar-profile" title="Profile" style="
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, var(--primary), var(--secondary));
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #fff;
-                    text-decoration: none;
-                    transition: all 0.2s ease;
-                    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
-                    margin-inline-start: 6px;
-                    flex-shrink: 0;
-                ">
-                    <i class="fas fa-user" style="font-size: 1rem;"></i>
+                <a href="#settings" class="compact-profile" title="Profile">
+                    <div class="compact-profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="compact-profile-info">
+                        <span class="compact-profile-name">Jordan Smith</span>
+                        <span class="compact-profile-role">Pro Grower</span>
+                    </div>
                 </a>
-                <style>
-                    .topbar-profile:hover {
-                        transform: scale(1.08);
-                        box-shadow: 0 6px 14px rgba(34, 197, 94, 0.4);
-                        opacity: 0.95;
-                    }
-                </style>
 
             </div>
         </header>
@@ -217,51 +202,7 @@
             <section id="settings" class="dashboard-panel">
                 <h2>Profile &amp; Settings</h2>
 
-                <!-- Profile Card -->
-                <div class="profile-header" style="
-                    background: var(--bg-alt);
-                    border: 1px solid var(--border);
-                    border-radius: 16px;
-                    padding: 2rem;
-                    margin-bottom: 1.5rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 1.5rem;
-                    flex-wrap: wrap;
-                ">
-                    <!-- Avatar -->
-                    <div style="
-                        width: 80px;
-                        height: 80px;
-                        border-radius: 50%;
-                        background: linear-gradient(135deg, var(--primary), var(--secondary));
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-shrink: 0;
-                        font-size: 2rem;
-                        color: #fff;
-                        box-shadow: 0 4px 16px rgba(34,197,94,0.3);
-                    ">
-                        <i class="fas fa-user"></i>
-                    </div>
-
-                    <!-- User Info -->
-                    <div style="flex: 1; min-width: 160px;">
-                        <div style="font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; color: var(--text);">Jordan Smith</div>
-                        <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">jordan@example.com</div>
-                        <span style="
-                            display: inline-block;
-                            background: var(--secondary);
-                            color: #fff;
-                            font-size: 0.75rem;
-                            font-weight: 700;
-                            padding: 3px 12px;
-                            border-radius: 999px;
-                            letter-spacing: 0.04em;
-                        ">Pro Grower</span>
-                    </div>
-                </div>
+                <!-- Profile Card Removed and moved to Topbar -->
 
                 <!-- Account Stats -->
                 <div style="
