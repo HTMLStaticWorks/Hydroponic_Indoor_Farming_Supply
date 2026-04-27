@@ -231,39 +231,4 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
-
-    // --- Dynamic Cart Logic ---
-    const updateCartBadges = (count) => {
-        const badges = document.querySelectorAll('.cart-badge');
-        badges.forEach(badge => {
-            badge.textContent = count;
-            badge.style.display = count > 0 ? 'flex' : 'none';
-            // Trigger animation
-            badge.classList.remove('bump');
-            void badge.offsetWidth; // Force reflow
-            badge.classList.add('bump');
-        });
-    };
-
-    let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
-    updateCartBadges(cartCount);
-
-    document.addEventListener('click', (e) => {
-        const target = e.target.closest('.btn-primary, .btn');
-        if (target && target.textContent.toLowerCase().includes('add to cart')) {
-            e.preventDefault();
-            cartCount++;
-            localStorage.setItem('cartCount', cartCount);
-            updateCartBadges(cartCount);
-
-            // Visual feedback on button
-            const originalText = target.textContent;
-            target.textContent = 'Added!';
-            target.style.backgroundColor = 'var(--secondary)';
-            setTimeout(() => {
-                target.textContent = originalText;
-                target.style.backgroundColor = '';
-            }, 1000);
-        }
-    });
 });
