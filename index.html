@@ -10,6 +10,55 @@
         content="Premium hydroponic farming kits, grow lights, and nutrients for urban farmers and enthusiasts.">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Testimonials section enhancements */
+        #testimonials .card-grid--three {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        @media (min-width: 1200px) {
+            #testimonials .card-grid--three {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                max-width: 1400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+        #testimonials .card {
+            padding: 40px 35px;
+            position: relative;
+        }
+        
+        #testimonials .card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        #testimonials .card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        #testimonials .card div {
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+        
+        [data-theme="dark"] #testimonials .card div {
+            color: var(--secondary);
+        }
+    </style>
     <script>
         (function () {
             var t = localStorage.getItem('theme') || 'light';
@@ -42,7 +91,6 @@
 
             <a href="cart.html" class="icon-btn" title="Cart">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge" style="display: none;">0</span>
             </a>
             <a href="login.html" class="icon-btn" title="Profile">
                 <i class="fas fa-user"></i>
@@ -256,10 +304,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <a href="index.html" class="logo">
+                    <div class="logo">
                         <i class="fas fa-leaf" aria-hidden="true"></i>
                         <span>HydroGrow</span>
-                    </a>
+                    </div>
                     <p>Sustainable indoor farming solutions for a greener future.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

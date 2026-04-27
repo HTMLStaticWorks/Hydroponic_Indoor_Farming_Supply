@@ -14,10 +14,9 @@
             grid-template-columns: 2fr 1fr;
             gap: 40px;
             align-items: start;
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            justify-content: center;
+            width: 100%;
         }
 
         .cart-items {
@@ -151,79 +150,62 @@
         @media (max-width: 992px) {
             .cart-container {
                 grid-template-columns: 1fr;
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            .cart-items {
-                width: 100%;
+                max-width: 100%;
+                padding: 0 20px;
             }
 
             .cart-item {
                 grid-template-columns: 80px 1fr;
-                grid-template-rows: auto auto auto;
-                gap: 12px 15px;
+                grid-template-rows: auto auto;
             }
 
-            /* Row 1: image (col 1) + info (col 2) */
-            .cart-item img {
-                grid-column: 1;
-                grid-row: 1;
-            }
-
-            .item-info {
-                grid-column: 2;
-                grid-row: 1;
-            }
-
-            /* Row 2: quantity controls full width */
             .quantity-controls {
                 grid-column: 1 / 3;
-                grid-row: 2;
                 justify-content: space-between;
                 width: 100%;
             }
 
-            /* Row 3: price left, trash right */
             .item-total {
-                grid-column: 1;
-                grid-row: 3;
-                text-align: left;
-                min-width: auto;
-            }
-
-            .remove-btn {
                 grid-column: 2;
-                grid-row: 3;
-                justify-self: end;
-                align-self: center;
+                grid-row: 2;
+                text-align: right;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                padding: 0 15px;
+            }
+            
+            .cart-items, .order-summary {
+                padding: 20px;
+            }
+            
+            .cart-item {
+                gap: 15px;
+            }
+            
+            .cart-item img {
+                width: 70px;
+                height: 70px;
             }
         }
 
         @media (max-width: 480px) {
-            .cart-items {
-                padding: 20px 15px;
+            section {
+                padding: 40px 10px !important;
             }
-
-            .cart-item {
-                gap: 10px 12px;
+            
+            .cart-container {
+                padding: 0 10px !important;
             }
-
-            .cart-item img {
-                width: 72px;
-                height: 72px;
+            
+            .cart-items, .order-summary {
+                padding: 15px !important;
             }
-
-            .cart-footer-actions {
-                flex-direction: column;
-                gap: 12px;
-                align-items: stretch;
-            }
-
-            .cart-footer-actions .btn {
-                text-align: center;
-                justify-content: center;
+            
+            .quantity-controls {
+                padding: 6px 12px !important;
             }
         }
         .cart-badge {
@@ -240,7 +222,6 @@
         .cart-header {
             background-color: var(--bg-alt);
             padding: 40px 5%;
-            text-align: center;
         }
 
         .cart-header h1 {
@@ -312,7 +293,7 @@
 
             <a href="cart.html" class="icon-btn" title="Cart">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge" style="display: none;">0</span>
+                <span class="cart-badge">2</span>
             </a>
             <a href="login.html" class="icon-btn" title="Profile">
                 <i class="fas fa-user"></i>
@@ -337,8 +318,9 @@
             </div>
         </section>
 
-        <section style="display: flex; justify-content: center; align-items: flex-start; padding: 40px 20px;">
-            <div class="cart-container">
+        <section>
+            <div class="container">
+                <div class="cart-container">
                     <div class="cart-items">
                         <!-- Item 1 -->
                         <div class="cart-item">
@@ -415,10 +397,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <a href="index.html" class="logo">
-                        <i class="fas fa-leaf" aria-hidden="true"></i>
+                    <div class="logo">
+                        <i class="fas fa-leaf"></i>
                         <span>HydroGrow</span>
-                    </a>
+                    </div>
                     <p>Sustainable indoor farming solutions for a greener future.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
